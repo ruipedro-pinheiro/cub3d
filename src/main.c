@@ -12,6 +12,17 @@
 
 #include "../inc/main.h"
 
+// TODO:
+	/*parsing:
+		CHeck if file exists ?!\e
+		Check validity of map ?
+		Check if headers are valid
+	*/
+	/*\
+		Setup window ?
+		Launch game
+		.... whatever :p
+	*/
 int	main(int ac, char **av)
 {
 	if (ac != 2)
