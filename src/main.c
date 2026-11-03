@@ -14,5 +14,8 @@
 
 int	main(int ac, char **av)
 {
+	if (ac != 2)
+		ft_putendl_fd("Please give a cookie !", 2);
+	(void)av;
 	ft_putendl_fd("Hello there ! Welcom to cub3d", 1);
 }
