@@ -3,6 +3,8 @@ NAME = cub3d
 SRCDIR = src
 OBJDIR = .obj
 INCDIR = inc
+MINILIB_DIR = $(INCDIR)/minilibx
+MINILIB = $(MINILIB_DIR)/libmlx.a
 LIBFT_DIR = $(INCDIR)/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 CC = cc
@@ -40,11 +42,14 @@ all: $(NAME)
 	@if [ $$(cat $(CNT)) -gt 0 ]; then printf "\n"; fi
 	@printf " $(C)✅ [$(NAME)] $(B)Build complete$(X)\n"
 
-$(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(CFLAGS) -L$(LIBFT_DIR) $(OBJ) $(LIBFT) -lreadline -lncurses -o $(NAME)
+$(NAME): $(OBJ) $(LIBFT) $(MINILIB)
+	@$(CC) $(CFLAGS) -L$(LIBFT_DIR) -L$(MINILIB_DIR) $(OBJ) $(LIBFT) $(MINILIB) -lreadline -lncurses -o $(NAME)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)/executor $(OBJDIR)/parsing $(OBJDIR)/builtins
+
+$(MINILIB):
+	@$(MAKE) --silent -C $(MINILIB_DIR)
 
 $(LIBFT):
 	@$(MAKE) --silent -C $(LIBFT_DIR)
@@ -57,11 +62,13 @@ clean:
 	@printf "$(R)🗑️  [$(NAME)] Cleaned$(X)\n"
 	@rm -rf $(OBJDIR)
 	@$(MAKE) --silent -C $(LIBFT_DIR) clean
+	@$(MAKE) --silent -C $(MINILIB_DIR) clean
 
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) --silent -C $(LIBFT_DIR) fclean
 	@rm -f debug.log minishell .minishell_history .mini_cnt
+
 re: fclean all
 
 debug: CFLAGS += $(VAL_FLAGS)
