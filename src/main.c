@@ -14,14 +14,18 @@
 
 int	main(int ac, char **av)
 {
-	int	error;
+	int		error;
+	t_data *data;
 
+	data = NULL;
 	if (ac != 2)
 	{
 		ft_putendl_fd("Usage: ./cub3d maps/map.cub", 2);
 		return (1);
 	}
 	error = validate_map(av[1]);
-	if (!error)
+	if (error)
 		return (error);
+	run_win_mlx(data);
+	return (0);
 }
