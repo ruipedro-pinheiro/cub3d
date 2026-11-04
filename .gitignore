@@ -18,4 +18,3 @@ vgcore.*
 .vscode/
 *.swp
 .DS_Store%  
-/inc/minilibx/test
