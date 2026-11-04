@@ -12,11 +12,12 @@
 
 #include "../inc/main.h"
 
-// I've decided to return specific errors specifying why the map is not valid.
-// There's still not real map validation from the rules but only basic checks
-// 0 = good/no errors
-//-1 = doesn't exist
-// 1 = not valid (any rules that are invalid following subject) TODO:
+/* I've decided to return specific errors specifying why the map is not valid.
+ There's still not real map validation from the rules but only basic checks
+ 0 = good/no errors
+-1 = doesn't exist
+ 1 = not valid (any rules that are invalid following subject) TODO:
+*/
 
 void	output_validation(int error, char *pathToMap)
 {
