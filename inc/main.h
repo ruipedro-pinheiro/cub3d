@@ -13,6 +13,6 @@
 #ifndef MAIN_H
 # define MAIN_H
 # include "libft/libft.h"
-//# include "minilibx/mlx.h"
+# include "minilibx/mlx.h"
 
 #endif

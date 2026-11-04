@@ -1,43 +1,24 @@
-/*
-** mlx.h for MinilibX in 
-** 
-** Made by Charlie Root
-** Login   <ol@epitech.net>
-** 
-** Started on  Mon Jul 31 16:37:50 2000 Charlie Root
-** Last update Tue May 15 16:23:28 2007 Olivier Crouzet
-*/
-
-/*
-**   MinilibX -  Please report bugs
-*/
-
-
-/*
-** FR msg - FR msg - FR msg
-**
-** La MinilibX utilise 2 librairies supplementaires qu'il
-**      est necessaire de rajouter a la compilation :
-**   -lmlx -lXext -lX11
-**
-** La MinilibX permet le chargement des images de type Xpm.
-** Notez que cette implementation est incomplete.
-** Merci de communiquer tout probleme de chargement d'image
-** de ce type.
-*/
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mlx.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/04 12:28:03 by rpinheir          #+#    #+#             */
+/*   Updated: 2026/11/04 12:30:09 by rpinheir         ###   ########.ch       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef MLX_H
 
-#define	MLX_H
+# define MLX_H
 
-
-void	*mlx_init();
+void	*mlx_init(void);
 /*
 **  needed before everything else.
 **  return (void *)0 if failed
 */
-
 
 /*
 ** Basic actions
@@ -47,14 +28,13 @@ void	*mlx_new_window(void *mlx_ptr, int size_x, int size_y, char *title);
 /*
 **  return void *0 if failed
 */
-int	mlx_clear_window(void *mlx_ptr, void *win_ptr);
-int	mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
+int     mlx_clear_window(void *mlx_ptr, void *win_ptr);
+int     mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
 /*
 **  origin for x & y is top left corner of the window
 **  y down is positive
 **  color is 0x00RRGGBB
 */
-
 
 /*
 ** Image stuff
@@ -81,11 +61,11 @@ int	mlx_get_color_value(void *mlx_ptr, int color);
 ** dealing with Events
 */
 
-int	mlx_mouse_hook (void *win_ptr, int (*funct_ptr)(), void *param);
-int	mlx_key_hook (void *win_ptr, int (*funct_ptr)(), void *param);
-int	mlx_expose_hook (void *win_ptr, int (*funct_ptr)(), void *param);
+int	mlx_mouse_hook (void *win_ptr, int (*funct_ptr)(void), void *param);
+int	mlx_key_hook (void *win_ptr, int (*funct_ptr)(void), void *param);
+int	mlx_expose_hook (void *win_ptr, int (*funct_ptr)(void), void *param);
 
-int	mlx_loop_hook (void *mlx_ptr, int (*funct_ptr)(), void *param);
+int	mlx_loop_hook (void *mlx_ptr, int (*funct_ptr)(void), void *param);
 int	mlx_loop (void *mlx_ptr);
 int mlx_loop_end (void *mlx_ptr);
 
@@ -123,7 +103,7 @@ int	mlx_destroy_display(void *mlx_ptr);
 */
 
 int	mlx_hook(void *win_ptr, int x_event, int x_mask,
-                 int (*funct)(), void *param);
+                 int (*funct)(void), void *param);
 
 int	mlx_do_key_autorepeatoff(void *mlx_ptr);
 int	mlx_do_key_autorepeaton(void *mlx_ptr);
