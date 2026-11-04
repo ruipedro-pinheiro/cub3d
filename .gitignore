@@ -8,7 +8,6 @@ cub3d
 includes/lib/libft/objects/
 
 # files and logs    
-test/
 salida.txt
 texto.txt
 *.log
