@@ -1,5 +1,4 @@
 NAME = cub3d
-
 SRCDIR = src
 OBJDIR = .obj
 INCDIR = inc
@@ -43,13 +42,14 @@ all: $(NAME)
 	@printf " $(C)✅ [$(NAME)] $(B)Build complete$(X)\n"
 
 $(NAME): $(OBJ) $(LIBFT) $(MINILIB)
-	@$(CC) $(CFLAGS) -L$(LIBFT_DIR) -L$(MINILIB_DIR) $(OBJ) $(LIBFT) $(MINILIB) -lmlx -lXext -lX11 -o $(NAME)
+	@$(CC) $(CFLAGS) -L$(LIBFT_DIR) -L$(MINILIB_DIR) $(OBJ) $(LIBFT) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
 
 $(OBJDIR):
-	@mkdir -p $(OBJDIR)/executor $(OBJDIR)/parsing $(OBJDIR)/builtins
+	@mkdir -p $(OBJDIR)
 
 $(MINILIB):
-	@$(MAKE) --silent -C $(MINILIB_DIR)
+	@printf "$(Y) 📚 [MiniLibX] building... $(RESET)"
+	@$(MAKE) -C $(MINILIB_DIR) --silent 2>/dev/null
 
 $(LIBFT):
 	@$(MAKE) --silent -C $(LIBFT_DIR)
@@ -59,15 +59,15 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 	@$(call progress,$(words $(SRC)))
 
 clean:
-	@printf "$(R)🗑️  [$(NAME)] Cleaned$(X)\n"
+	@printf "$(R) 🗑️ [$(NAME)] Cleaned$(X)\n"
 	@rm -rf $(OBJDIR)
-	@$(MAKE) --silent -C $(LIBFT_DIR) clean
-	@$(MAKE) --silent -C $(MINILIB_DIR) clean
+	@$(MAKE) -C $(LIBFT_DIR) clean --silent 
+	@$(MAKE) -C $(MINILIB_DIR) clean --silent 
 
 fclean: clean
 	@rm -f $(NAME)
 	@$(MAKE) --silent -C $(LIBFT_DIR) fclean
-	@rm -f debug.log minishell .minishell_history .mini_cnt
+	@rm -f /tmp/debug.log minishell .minishell_history .mini_cnt
 
 re: fclean all
 
