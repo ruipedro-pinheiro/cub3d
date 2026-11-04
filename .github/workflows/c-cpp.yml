@@ -35,4 +35,4 @@ jobs:
     - name: make
       run: make
     - name: cub3d
-      run: ./cub3d
+      run: ./cub3d maps/mandatory.cub
