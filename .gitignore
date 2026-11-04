@@ -8,6 +8,7 @@ cub3d
 includes/lib/libft/objects/
 
 # files and logs    
+test/
 salida.txt
 texto.txt
 *.log
@@ -18,3 +19,4 @@ vgcore.*
 .vscode/
 *.swp
 .DS_Store%  
+/inc/minilibx/test
