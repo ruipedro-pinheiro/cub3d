@@ -1,0 +1,33 @@
+name: C/C++ CI
+# Should only work on main
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  norminette:
+  
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+    - uses: actions/setup-python@v7
+      with:
+        python-version: '3.12'
+    - name: install norminette
+      run: pip install norminette==3.3.60
+    - name: norminette
+      run: norminette src inc/*.h
+      
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+      with:
+        submodules: recursive
+    - name: make
+      run: make
+    - name: cub3d
+      run: ./cub3d
