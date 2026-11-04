@@ -1,3 +1,5 @@
+MAKEFLAGS += --silent
+
 ##
 ## Makefile for MiniLibX in /home/boulon/work/c/raytraceur/minilibx
 ## 
