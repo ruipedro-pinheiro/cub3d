@@ -1,4 +1,20 @@
-*.o
-.obj/*.o
-*.a 
+# Bins
+cub3d
 
+# Objets and Libraries
+.obj/
+*.o
+*.a
+includes/lib/libft/objects/
+
+# files and logs    
+salida.txt
+texto.txt
+*.log
+vgcore.*
+*_cnt*
+
+# Editor / System files
+.vscode/
+*.swp
+.DS_Store%  
