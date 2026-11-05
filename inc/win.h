@@ -20,6 +20,6 @@ typedef struct s_data {
 } t_data;
 
 int run_win_mlx(t_data* data);
-int handle_keypressed(void* param);
+int handle_keypressed(int keycodde, void* param);
 
 #endif // H_WIN
