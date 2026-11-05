@@ -6,8 +6,11 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:25:24 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/04 17:26:39 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/04 18:55:51 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	validate_map(char *pathToMap);
+#include "struct.h"
+
+int		validate_map(t_game *game);
+int		validate(t_game *game);
