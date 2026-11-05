@@ -15,8 +15,11 @@
 //TODO free all things in close windows and ESC
 int	close_window(void *param)
 {
+	t_game	*game;
+
+	game = (t_game *)param;
 	ft_putendl_fd("Exit in 'x' Button", 2);
-	(void)param;
+	ft_strfree(game->map);
 	exit(0);
 }
 
@@ -29,7 +32,7 @@ int	handle_keypressed(int keycode, void *param)
 	if (keycode == 53 || keycode == 65307)
 	{
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-		free(game);
+		ft_strfree(game->map);
 		exit(0);
 	}
 	return (0);
@@ -37,23 +40,12 @@ int	handle_keypressed(int keycode, void *param)
 
 int	run_win_mlx(t_game *game)
 {
-	game = malloc(sizeof(t_game));
-	if (!game)
-	{
-		perror("malloc");
-		return (0);
-	}
 	game->mlx_ptr = mlx_init();
 	if (!game->mlx_ptr)
-	{
-		free(game);
-		game = NULL;
 		return (0);
-	}
 	game->win_ptr = mlx_new_window(game->mlx_ptr, 800, 600, "Cub 3D - 42");
 	mlx_hook(game->win_ptr, 2, 1L << 0, (void *)handle_keypressed, game);
-	mlx_hook(game->win_ptr, 17, 9, (void *)close_window, NULL);
+	mlx_hook(game->win_ptr, 17, 9, (void *)close_window, game);
 	mlx_loop(game->mlx_ptr);
-	free(game);
 	return (0);
 }
