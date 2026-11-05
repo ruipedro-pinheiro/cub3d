@@ -16,14 +16,18 @@
 
 int	main(int ac, char **av)
 {
+	t_game	game;
 	int		error;
 
+	game.map = NULL;
 	if (ac != 2)
 	{
 		ft_putendl_fd("Usage: ./cub3d maps/map.cub", 2);
 		return (1);
 	}
-	error = validate_map(av[1]);
-	if (error != 0)
-		return (error);
+	game.path_to_map = av[1];
+	error = validate_map(&game);
+	if (error)
+		return (ft_strfree(game.map), error);
+	return (ft_strfree(game.map), 0);
 }

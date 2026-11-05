@@ -15,16 +15,16 @@
 /* I've decided to return specific errors specifying why the map is not valid.
  There's still not real map validation from the rules but only basic checks
  0 = good/no errors
--1 = doesn't exist
+-1 = doesn't exist or fd error
  1 = not valid (any rules that are invalid following subject) TODO:
 */
 
-static void	output_validation(int error, char *pathToMap)
+static void	output_validation(int error, char *path_to_map)
 {
 	if (error == 1)
-		(ft_putstr(pathToMap), ft_putendl_fd(" is not valid", 2));
+		(ft_putstr(path_to_map), ft_putendl_fd(" is not valid", 2));
 	if (error == -1)
-		(ft_putstr(pathToMap), ft_putendl_fd(" does not exist", 2));
+		(ft_putstr(path_to_map), ft_putendl_fd(" does not exist", 2));
 }
 
 static bool	check_extension(char *str, int len)
@@ -35,46 +35,60 @@ static bool	check_extension(char *str, int len)
 	return (false);
 }
 
-int	dup_map(int fd)
+static char	**expand_map(char **map, int count_len, int i, char *line)
+{
+	char	**new;
+
+	new = malloc(sizeof(char *) * (count_len + 2));
+	if (!new)
+		return (ft_putendl_fd("Error: couldn't malloc new map", 2)
+			, ft_strfree(map), free(line), NULL);
+	while (++i < count_len)
+		new[i] = map[i];
+	free(map);
+	new[count_len] = line;
+	new[count_len + 1] = NULL;
+	return (new);
+}
+
+int	dup_map(t_game *game, int fd)
 {
 	char	*line;
 	char	**map;
-	char	**new;
 	int		count_len;
+	int		i;
 
 	map = NULL;
-	new = NULL;
 	count_len = 0;
 	while (1)
 	{
+		i = -1;
 		line = get_next_line(fd);
 		if (!line || !line[0])
 			break ;
-		new = malloc(sizeof(char *) * (count_len + 2));
-		new[count_len] = line;
-		free(map);
-		map = new;
+		map = expand_map(map, count_len, i, line);
+		if (!map)
+			break ;
 		count_len++;
 	}
-	return (0);
+	if (!map)
+		return (1);
+	return (game->map = map, 0);
 }
-//TODO: set count_len and char **map to t_game struct
 
-int	validate_map(char *pathToMap)
+int	validate_map(t_game *game)
 {
-	int		len;
 	int		map_fd;
 	int		error;
 
 	error = 0;
-	map_fd = open(pathToMap, O_RDONLY);
+	map_fd = open(game->path_to_map, O_RDONLY);
 	if (map_fd == -1)
-		return (output_validation(error = -1, pathToMap), error);
-	len = ft_strlen(pathToMap);
-	if (!check_extension(pathToMap, len))
+		return (output_validation(error = -1, game->path_to_map), error);
+	if (!check_extension(game->path_to_map, ft_strlen(game->path_to_map)))
 		error = 1;
-	if (dup_map(map_fd) != 0)
+	if (dup_map(game, map_fd))
 		error = -1;
-	output_validation(error, pathToMap);
+	output_validation(error, game->path_to_map);
 	return (error);
 }

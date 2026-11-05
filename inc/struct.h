@@ -15,7 +15,9 @@
 
 typedef struct s_game
 {
-	int	map_fd;
+	char	**map;
+	char	*path_to_map;
+
 }	t_game;
 
 #endif
