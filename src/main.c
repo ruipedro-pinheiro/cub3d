@@ -18,7 +18,6 @@ int	main(int ac, char **av)
 {
 	t_game	game;
 	int		error;
-	t_game	game;
 
 	ft_bzero(&game, sizeof(game));
 	game.map = NULL;
