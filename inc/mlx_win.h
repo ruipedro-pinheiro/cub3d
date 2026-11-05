@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef H_WIN
-#define H_WIN
+#ifndef MLX_WIN_H
+# define MLX_WIN_H
 
-int run_win_mlx(t_game* game);
-int handle_keypressed(int keycodde, void* param);
+int	run_win_mlx(t_game *game);
+int	handle_keypressed(int keycodde, void *param);
 
 #endif // H_WIN

@@ -12,12 +12,12 @@
 
 #include "../inc/main.h"
 
-//TODO: Start struct t_game here;
+// TODO: Start struct t_game here;
 
 int	main(int ac, char **av)
 {
 	int		error;
-	t_game game;
+	t_game	game;
 
 	ft_bzero(&game, sizeof(game));
 	if (ac != 2)
@@ -28,4 +28,6 @@ int	main(int ac, char **av)
 	error = validate_map(av[1]);
 	if (error != 0)
 		return (error);
-	run_win_mlx(&game); return (0); }
+	run_win_mlx(&game);
+	return (0);
+}
