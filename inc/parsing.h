@@ -10,5 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		validate_map(char *pathToMap);
-bool	check_outline(int map_fd);
+#include "struct.h"
+
+int		validate_map(t_game *game);
+int		validate(t_game *game);

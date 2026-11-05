@@ -18,5 +18,10 @@ typedef struct s_game
 	int		map_fd;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	char	**map;
+	char	*path_to_map;
+	int		count_lines;
+	int		max_length;
+
 }	t_game;
 #endif
