@@ -17,6 +17,8 @@ typedef struct s_game
 {
 	char	**map;
 	char	*path_to_map;
+	int		count_lines;
+	int		max_length;
 
 }	t_game;
 

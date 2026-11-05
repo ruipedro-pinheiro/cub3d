@@ -10,7 +10,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -Wshadow -Wstrict-prototypes -Wpointer-arith
 VAL_FLAGS  = -g3 -O0
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
-SRC = main.c validation.c wall_check.c
+SRC = main.c parse_prep.c
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 ################################################################################
@@ -81,6 +81,6 @@ run: re
 	./$(NAME)
 
 norm:
-	norminette | grep "Error"
+	@norminette src inc/*.h inc/libft | grep "Error" || echo "${C}No errors found :3${X}"
 
 .PHONY: all clean fclean re debug asan

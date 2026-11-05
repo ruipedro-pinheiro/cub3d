@@ -13,4 +13,4 @@
 #include "struct.h"
 
 int		validate_map(t_game *game);
-bool	check_outline(char **map);
+int		validate(t_game *game);
