@@ -6,13 +6,13 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 16:12:17 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/04 19:39:39 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/05 18:02:43 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
-
-//TODO: Start struct t_game here;
+// TODO: Make clean_exit function to free anything at exit
+// it must check if it exists or not
 
 int	main(int ac, char **av)
 {
@@ -26,8 +26,8 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	game.path_to_map = av[1];
-	error = validate_map(&game);
+	error = file_check(&game);
 	if (error)
-		return (ft_strfree(game.map), error);
-	return (ft_strfree(game.map), 0);
+		return (error);
+	return (0);
 }
