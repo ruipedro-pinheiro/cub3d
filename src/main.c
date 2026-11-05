@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 16:12:17 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/04 19:39:39 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/05 15:39:21 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 int	main(int ac, char **av)
 {
 	int		error;
-	t_data *data;
+	t_game game;
 
-	data = NULL;
+	ft_bzero(&game, sizeof(game));
 	if (ac != 2)
 	{
 		ft_putendl_fd("Usage: ./cub3d maps/map.cub", 2);
@@ -28,6 +28,4 @@ int	main(int ac, char **av)
 	error = validate_map(av[1]);
 	if (error != 0)
 		return (error);
-	run_win_mlx(data);
-	return (0);
-}
+	run_win_mlx(&game); return (0); }

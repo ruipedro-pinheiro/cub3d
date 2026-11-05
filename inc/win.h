@@ -13,12 +13,7 @@
 #ifndef H_WIN
 #define H_WIN
 
-typedef struct s_data {
-    void* mlx_ptr;
-    void* win_ptr;
-} t_data;
-
-int run_win_mlx(t_data* data);
+int run_win_mlx(t_game* game);
 int handle_keypressed(int keycodde, void* param);
 
 #endif // H_WIN

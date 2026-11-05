@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
-# define STRUCT_H
+#define STRUCT_H
 
-typedef struct s_game
-{
-	int	map_fd;
-}	t_game;
+typedef struct s_game {
+    int map_fd;
+    void* mlx_ptr;
+    void* win_ptr;
+} t_game;
 
 #endif
