@@ -42,7 +42,7 @@ all: $(NAME)
 	@printf " $(C)✅ [$(NAME)] $(B)Build complete$(X)\n"
 
 $(NAME): $(OBJ) $(LIBFT) $(MINILIB)
-	@$(CC) $(CFLAGS) -L$(LIBFT_DIR) -L$(MINILIB_DIR) $(OBJ) $(LIBFT) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
+	@$(CC) $(CFLAGS) -L$(LIBFT_DIR)  $(OBJ) $(LIBFT) -L$(MINILIB_DIR) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
