@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validation.c                                       :+:      :+:    :+:   */
+/*   parse_prep.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:21:24 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/04 19:34:20 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/05 18:02:58 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	dup_map(t_game *game, int fd)
 	return (game->map = map, 0);
 }
 
-int	validate_map(t_game *game)
+int	file_check(t_game *game)
 {
 	int		map_fd;
 	int		error;
@@ -88,7 +88,9 @@ int	validate_map(t_game *game)
 	if (!check_extension(game->path_to_map, ft_strlen(game->path_to_map)))
 		error = 1;
 	if (dup_map(game, map_fd))
-		error = -1;
+		return (-1);
+	if (validate(game))
+		error = 1;
 	output_validation(error, game->path_to_map);
 	return (error);
 }

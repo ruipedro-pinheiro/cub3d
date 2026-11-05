@@ -6,11 +6,11 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:25:24 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/04 18:55:51 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/05 17:29:02 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 
-int		validate_map(t_game *game);
+int		file_check(t_game *game);
 int		validate(t_game *game);
