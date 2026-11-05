@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:21:24 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/04 17:27:11 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/04 19:34:20 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,33 @@ static bool	check_extension(char *str, int len)
 	return (false);
 }
 
-int	validate_map(char *pathToMap)
+int	dup_map(int fd)
+{
+	char	*line;
+	char	**map;
+	char	**new;
+	int		count_len;
+
+	map = NULL;
+	new = NULL;
+	count_len = 0;
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (!line || !line[0])
+			break ;
+		new = malloc(sizeof(char *) * (count_len + 2));
+		new[count_len] = line;
+		free(map);
+		map = new;
+		count_len++;
+	}
+	return (0);
+}
+//TODO: set count_len and char **map to t_game struct
+
+int	validate_map(char *pathToMap)
+{
 	int		len;
 	int		map_fd;
 	int		error;
@@ -48,6 +73,8 @@ int	validate_map(char *pathToMap)
 	len = ft_strlen(pathToMap);
 	if (!check_extension(pathToMap, len))
 		error = 1;
+	if (dup_map(map_fd) != 0)
+		error = -1;
 	output_validation(error, pathToMap);
 	return (error);
 }

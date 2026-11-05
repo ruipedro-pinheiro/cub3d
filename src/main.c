@@ -6,11 +6,13 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 16:12:17 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/04 17:27:48 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/04 19:39:39 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
+
+//TODO: Start struct t_game here;
 
 int	main(int ac, char **av)
 {
@@ -24,7 +26,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	error = validate_map(av[1]);
-	if (error)
+	if (error != 0)
 		return (error);
 	run_win_mlx(data);
 	return (0);
