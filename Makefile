@@ -10,7 +10,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -Wshadow -Wstrict-prototypes -Wpointer-arith
 VAL_FLAGS  = -g3 -O0
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
-SRC = main.c validation.c win.c wall_check.c parse_prep.c
+SRC = main.c win.c parse_prep.c
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 ################################################################################
@@ -61,8 +61,8 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 clean:
 	@printf "$(R) 🗑️ [$(NAME)] Cleaned$(X)\n"
 	@rm -rf $(OBJDIR)
-	@$(MAKE) -C $(LIBFT_DIR) clean --silent 
-	@$(MAKE) -C $(MINILIB_DIR) clean --silent 
+	@$(MAKE) -C $(LIBFT_DIR) clean --silent
+	@$(MAKE) -C $(MINILIB_DIR) clean --silent
 
 fclean: clean
 	@rm -f $(NAME)

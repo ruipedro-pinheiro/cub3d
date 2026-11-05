@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 20:48:16 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/05 21:52:36 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/05 23:30:39 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ int	close_window(void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	ft_putendl_fd("Exit in 'x' Button", 2);
 	ft_strfree(game->map);
+	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	mlx_destroy_display(game->mlx_ptr);
+	free(game->mlx_ptr);
 	exit(0);
 }
 
@@ -32,6 +34,8 @@ int	handle_keypressed(int keycode, void *param)
 	if (keycode == 53 || keycode == 65307)
 	{
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+		mlx_destroy_display(game->mlx_ptr);
+		free(game->mlx_ptr);
 		ft_strfree(game->map);
 		exit(0);
 	}
