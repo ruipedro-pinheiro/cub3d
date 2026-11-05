@@ -16,7 +16,6 @@
 typedef struct s_data {
     void* mlx_ptr;
     void* win_ptr;
-    int keycode;
 } t_data;
 
 int run_win_mlx(t_data* data);
