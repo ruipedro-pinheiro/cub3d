@@ -6,11 +6,11 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/05 16:53:57 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/05 18:04:45 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/05 18:10:22 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#include "../../inc/main.h"
 
 //TODO: Check headers first
 /*

@@ -10,7 +10,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -Wshadow -Wstrict-prototypes -Wpointer-arith
 VAL_FLAGS  = -g3 -O0
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
-SRC = main.c parse_prep.c validation.c
+SRC = main.c parse_prep.c validation/validation.c
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 ################################################################################
@@ -21,6 +21,7 @@ RESET := $(shell echo 0 > $(CNT))
 C = \033[1;36m
 Y = \033[1;33m
 R = \033[1;31m
+G = \033[1;32m
 B = \033[1m
 X = \033[0m
 
@@ -45,7 +46,7 @@ $(NAME): $(OBJ) $(LIBFT) $(MINILIB)
 	@$(CC) $(CFLAGS) -L$(LIBFT_DIR) -L$(MINILIB_DIR) $(OBJ) $(LIBFT) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
 
 $(OBJDIR):
-	@mkdir -p $(OBJDIR)
+	@mkdir -p $(OBJDIR) $(OBJDIR)/validation
 
 $(MINILIB):
 	@printf "$(Y) 📚 [MiniLibX] building... $(RESET)"
@@ -81,6 +82,6 @@ run: re
 	./$(NAME)
 
 norm:
-	@norminette src inc/*.h inc/libft | grep "Error" || echo "${C}No errors found :3${X}"
+	@norminette src inc/*.h inc/libft | grep "Error" || echo "${G}No errors found :3${X}"
 
 .PHONY: all clean fclean re debug asan
