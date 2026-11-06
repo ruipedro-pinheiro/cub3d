@@ -21,5 +21,8 @@
 int		run_win_mlx(t_game *game);
 int		handle_keypressed(int keycodde, void *param);
 void	create_canvas(t_game *game);
+// CLEANING FUNTIONS
 void	clear_images(t_game *game);
+void	safe_exit(t_game *game, int code);
+//
 #endif // H_WIN

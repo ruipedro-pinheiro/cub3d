@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 20:48:16 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/06 18:06:32 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/06 18:09:13 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	close_window(void *param)
 
 	game = (t_game *)param;
 	safe_exit(game, 1);
+	return (0);
 }
 
 int	handle_keypressed(int keycode, void *param)
