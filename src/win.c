@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 20:48:16 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/06 18:09:13 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/06 18:11:52 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	handle_keypressed(int keycode, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	printf("La tecla presionada es keycode: %d\n", keycode);
 	if (keycode == 53 || keycode == 65307)
 	{
 		safe_exit(game, 1);
