@@ -17,6 +17,8 @@
 #define TEXTURE_SOUTH "assets/textures/south.xpm"
 #define TEXTURE_WEST  "assets/textures/west.xpm"
 #define TEXTURE_EST   "assets/textures/est.xpm"
+#define HEIGHT 600
+#define WIDTH 800
 
 int		run_win_mlx(t_game *game);
 int		handle_keypressed(int keycodde, void *param);

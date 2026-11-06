@@ -6,11 +6,12 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 20:48:16 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/06 18:11:52 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/06 18:16:00 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
+
 void	safe_exit(t_game *game, int code)
 {
 	clear_images(game);
@@ -24,7 +25,7 @@ void	safe_exit(t_game *game, int code)
 	free(game->mlx_ptr);
 	exit(code);
 }
-// TODO free all things in close windows and ESC
+
 int	close_window(void *param)
 {
 	t_game	*game;
@@ -40,9 +41,7 @@ int	handle_keypressed(int keycode, void *param)
 
 	game = (t_game *)param;
 	if (keycode == 53 || keycode == 65307)
-	{
 		safe_exit(game, 1);
-	}
 	return (0);
 }
 
