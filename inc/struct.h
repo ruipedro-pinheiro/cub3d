@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 18:03:08 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/06 14:59:42 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/06 17:16:34 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_img
 	int		bpp;
 	int		endian;
 	int		size_line;
-}   t_img;
+}			t_img;
 
 typedef struct s_game
 {
@@ -34,10 +34,10 @@ typedef struct s_game
 	int		count_lines;
 	int		max_length;
 
-	t_img	*screen;
-	t_img	*w_north;
-	t_img	*w_south;
-	t_img	*w_est;
-	t_img	*w_west;
-}	t_game;
+	t_img	screen;
+	t_img	w_north;
+	t_img	w_south;
+	t_img	w_est;
+	t_img	w_west;
+}			t_game;
 #endif

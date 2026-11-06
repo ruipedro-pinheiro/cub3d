@@ -13,10 +13,10 @@
 #ifndef MLX_WIN_H
 # define MLX_WIN_H
 
-#define	TEXTURE_NORTH  "assets/textures/north.xpm"
-#define	TEXTURE_SOUTH  "assets/textures/south.xpm"
-#define	TEXTURE_WEST  "assets/textures/est.xpm"
-#define	TEXTURE_EST  "assets/textures/west.xpm"
+#define TEXTURE_NORTH "assets/textures/north.xpm"
+#define TEXTURE_SOUTH "assets/textures/south.xpm"
+#define TEXTURE_WEST  "assets/textures/west.xpm"
+#define TEXTURE_EST   "assets/textures/est.xpm"
 
 int		run_win_mlx(t_game *game);
 int		handle_keypressed(int keycodde, void *param);

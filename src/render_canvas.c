@@ -3,30 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   render_canvas.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/06 16:23:19 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/06 18:00:28 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
-void	clear_images(t_game *game);
 
-void	init_textures(t_game *game)
+void	clear_images(t_game *game)
 {
-	game->w_north->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_NORTH, 64, 64);
-	game->w_south->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_SOUTH, 64, 64); 
-	game->w_est->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_EST, 64, 64);
-	game->w_west->img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_WEST, 64, 64);
+	if (game->screen.img_ptr != NULL)
+		mlx_destroy_image(game->mlx_ptr, game->screen.img_ptr);
+	else if (game->w_north.img_ptr != NULL)
+		mlx_destroy_image(game->mlx_ptr, game->screen.img_ptr);
+	else if (game->w_south.img_ptr != NULL)
+		mlx_destroy_image(game->mlx_ptr, game->screen.img_ptr);
+	else if (game->w_west.img_ptr != NULL)
+		mlx_destroy_image(game->mlx_ptr, game->screen.img_ptr);
+	else if (game->w_est.img_ptr != NULL)
+		mlx_destroy_image(game->mlx_ptr, game->screen.img_ptr);
 }
+
+int	init_textures(t_game *game)
+{
+	game->w_north.img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_NORTH,
+			&game->w_north.width, &game->w_north.heigth);
+	if (game->w_north.img_ptr == NULL)
+		return (perror("Error loading NORTH"), 1);
+	game->w_south.img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_SOUTH,
+			&game->w_south.width, &game->w_south.heigth);
+	if (game->w_south.img_ptr == NULL)
+		return (perror("Error loading  SOUTH"),1);
+	game->w_est.img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_EST,
+			&game->w_est.width, &game->w_est.heigth);
+	if (game->w_est.img_ptr == NULL)
+		return (perror("Error loading  EST"),1);
+	game->w_west.img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_WEST,
+			&game->w_west.width, &game->w_west.heigth);
+	if (game->w_west.img_ptr == NULL)
+		return (perror("Error loading  WEST"),1);
+	return (0);
+}
+
 
 void	create_canvas(t_game *game)
 {
-	game->screen->img_ptr =mlx_new_image(game->mlx_ptr, 400, 400);
-	if(!game->screen->img_ptr)
+	game->screen.img_ptr = mlx_new_image(game->mlx_ptr, 400, 400);
+	if (!game->screen.img_ptr)
 		return ;
-	game->screen->addr =  mlx_get_data_addr(game->screen->img_ptr, game->screen->bpp, game->screen->size_line, game->screen->endian);
-	
-	init_textures(game);
+	printf("puede ser aqui A");
+	game->screen.addr = mlx_get_data_addr(game->screen.img_ptr,
+			&game->screen.bpp, &game->screen.size_line,
+			&game->screen.endian);
+	printf("puede ser aqui B");
+	if(init_textures(game) != 0)
+	{
+		clear_images(game);
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+		mlx_destroy_display(game->mlx_ptr);
+		free(game->mlx_ptr);
+		ft_strfree(game->map);
+		exit(42);
+	}
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,game->w_est.img_ptr, 200, 200);
 }
