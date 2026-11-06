@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/06 18:00:28 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/06 18:07:08 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,6 @@ void	create_canvas(t_game *game)
 			&game->screen.endian);
 	printf("puede ser aqui B");
 	if(init_textures(game) != 0)
-	{
-		clear_images(game);
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-		mlx_destroy_display(game->mlx_ptr);
-		free(game->mlx_ptr);
-		ft_strfree(game->map);
-		exit(42);
-	}
+		safe_exit(game, 42);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr,game->w_est.img_ptr, 200, 200);
 }

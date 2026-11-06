@@ -6,24 +6,31 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 20:48:16 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/06 17:57:45 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/06 18:06:32 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
-
+void	safe_exit(t_game *game, int code)
+{
+	clear_images(game);
+	if(game->map != NULL)
+		ft_strfree(game->map);
+	if(game->mlx_ptr || game->win_ptr)
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+	if(game->mlx_ptr)
+		mlx_destroy_display(game->mlx_ptr);
+	if(game->mlx_ptr)
+	free(game->mlx_ptr);
+	exit(code);
+}
 // TODO free all things in close windows and ESC
 int	close_window(void *param)
 {
 	t_game	*game;
 
 	game = (t_game *)param;
-	clear_images(game);
-	ft_strfree(game->map);
-	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_display(game->mlx_ptr);
-	free(game->mlx_ptr);
-	exit(0);
+	safe_exit(game, 1);
 }
 
 int	handle_keypressed(int keycode, void *param)
@@ -34,12 +41,7 @@ int	handle_keypressed(int keycode, void *param)
 	printf("La tecla presionada es keycode: %d\n", keycode);
 	if (keycode == 53 || keycode == 65307)
 	{
-		clear_images(game);
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-		mlx_destroy_display(game->mlx_ptr);
-		free(game->mlx_ptr);
-		ft_strfree(game->map);
-		exit(0);
+		safe_exit(game, 1);
 	}
 	return (0);
 }
