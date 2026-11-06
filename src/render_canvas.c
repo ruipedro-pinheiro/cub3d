@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/06 18:30:16 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/06 21:42:57 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	create_canvas(t_game *game)
 {
 	game->screen.img_ptr = mlx_new_image(game->mlx_ptr, 400, 400);
 	if (!game->screen.img_ptr)
-		return ;
+		safe_exit(game, 1);
 	game->screen.addr = mlx_get_data_addr(game->screen.img_ptr,
 			&game->screen.bpp, &game->screen.size_line,
 			&game->screen.endian);
