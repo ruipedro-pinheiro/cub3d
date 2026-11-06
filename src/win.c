@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 20:48:16 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/05 23:30:39 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/06 10:34:43 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	run_win_mlx(t_game *game)
 	if (!game->mlx_ptr)
 		return (0);
 	game->win_ptr = mlx_new_window(game->mlx_ptr, 800, 600, "Cub 3D - 42");
+	create_canvas(game);
 	mlx_hook(game->win_ptr, 2, 1L << 0, (void *)handle_keypressed, game);
 	mlx_hook(game->win_ptr, 17, 9, (void *)close_window, game);
 	mlx_loop(game->mlx_ptr);
