@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 11:47:06 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 15:04:59 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	put_pixel(int x, int y, int color, t_game *game)
 void	draw_square(t_game *game, int x, int y, int size)
 {
 	int	i;
-	int color;
+	int	color;
 
 	color = 0x00FF00;
 	i = 0;
