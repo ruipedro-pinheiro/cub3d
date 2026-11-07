@@ -49,7 +49,7 @@ $(OBJDIR):
 
 $(MINILIB):
 	@printf "$(Y) 📚 [MiniLibX] building... $(RESET)"
-	@$(MAKE) -C $(MINILIB_DIR) --silent 2>/dev/null
+	@$(MAKE) -C $(MINILIB_DIR)
 
 $(LIBFT):
 	@$(MAKE) --silent -C $(LIBFT_DIR)
