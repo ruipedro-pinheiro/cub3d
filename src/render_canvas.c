@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 20:28:53 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 20:50:17 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,6 @@ int	load_textures(t_game *game)
 	return (0);
 }
 
-void	put_pixel(int x, int y, int color, t_game *game)
-{
-	char	*ptr_px;
-
-	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
-		return ;
-	ptr_px = (char *)game->screen.addr + (y * game->screen.size_line + x * 4);
-	*(unsigned int *)ptr_px = color;
-}
-
 void	draw_square(t_game *game, int x, int y, int size)
 {
 	int	i;
@@ -79,32 +69,23 @@ void	draw_square(t_game *game, int x, int y, int size)
 	return ;
 }
 
-
-unsigned int	get_pixel(t_img *img, int x, int y)
+static void	render_texture(t_game *game, t_img *img, int posx, int posy)
 {
-	char	*src;
+	int				x;
+	int				y;
+	unsigned int	color;
 
-	src = (char *)img->addr + (y * img->size_line+ x * (img->bpp/ 8));
-	return (*(unsigned int *)src);
-}
-static void render_texture(t_game *game, t_img *img, int posx, int posy)
-{
-	int x;
-	int y;
-	unsigned int color;
-
-
-	if ( posx < 0 || posx >= WIDTH || posy < 0  || posy >= HEIGHT)
-		return;
+	if (posx < 0 || posx >= WIDTH || posy < 0 || posy >= HEIGHT)
+		return ;
 	y = 0;
 	while (y < img->heigth)
 	{
 		x = 0;
-		while( x < img->width)
+		while (x < img->width)
 		{
 			color = get_pixel(img, x, y);
 			if (color != 0xff000000)
-				put_pixel(posx + x , posy + y, color, game);
+				put_pixel(posx + x, posy + y, color, game);
 			x++;
 		}
 		y++;
@@ -115,11 +96,11 @@ void	create_canvas(t_game *game)
 {
 	game->screen.img_ptr = mlx_new_image(game->mlx_ptr, WIDTH, HEIGHT);
 	if (!game->screen.img_ptr)
-		safe_exit(game, 1);
+		exit(safe_exit(game, 1));
 	game->screen.addr = mlx_get_data_addr(game->screen.img_ptr,
 			&game->screen.bpp, &game->screen.size_line, &game->screen.endian);
 	if (load_textures(game) != 0)
-		safe_exit(game, 42);
+		exit(safe_exit(game, 42));
 	render_texture(game, &game->w_north, 50, 200);
 	render_texture(game, &game->w_south, 150, 200);
 	render_texture(game, &game->w_est, 250, 200);

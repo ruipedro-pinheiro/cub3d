@@ -26,6 +26,6 @@ void	create_canvas(t_game *game);
 // CLEANING FUNTIONS
 void	clear_images(t_game *game);
 void	clear_paths(t_game *game);
-void	safe_exit(t_game *game, int code);
+int		safe_exit(t_game *game, int code);
 //
 #endif // H_WIN

@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 16:12:17 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/07 17:57:26 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 20:48:58 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ int	main(int ac, char **av)
 	if (error)
 		return (ft_strfree(game.map), error);
 	run_win_mlx(&game);
-	return (ft_strfree(game.map), 0);
+	return (safe_exit(&game, 0));
 }
