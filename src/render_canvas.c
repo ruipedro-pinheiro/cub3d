@@ -6,59 +6,33 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 15:04:59 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:20:26 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
 
-void	clear_images(t_game *game)
+static int init_img(t_img *img, void *mlx_ptr, char *path)
 {
-	if (game->screen.img_ptr != NULL)
-	{
-		mlx_destroy_image(game->mlx_ptr, game->screen.img_ptr);
-		game->screen.img_ptr = NULL;
-	}
-	if (game->w_north.img_ptr != NULL)
-	{
-		mlx_destroy_image(game->mlx_ptr, game->w_north.img_ptr);
-		game->w_north.img_ptr = NULL;
-	}
-	if (game->w_south.img_ptr != NULL)
-	{
-		mlx_destroy_image(game->mlx_ptr, game->w_south.img_ptr);
-		game->w_south.img_ptr = NULL;
-	}
-	if (game->w_west.img_ptr != NULL)
-	{
-		mlx_destroy_image(game->mlx_ptr, game->w_west.img_ptr);
-		game->w_west.img_ptr = NULL;
-	}
-	if (game->w_est.img_ptr != NULL)
-	{
-		mlx_destroy_image(game->mlx_ptr, game->w_est.img_ptr);
-		game->w_est.img_ptr = NULL;
-	}
+	if(fill_path_img(img, path) == 1)
+		return(1);
+	img->img_ptr = mlx_xpm_file_to_image(mlx_ptr, img->path,
+			&img->width, &img->heigth);
+	if (img->img_ptr == NULL)
+		return (perror("Error loading NORTH"), 1);
+	return (0);
 }
 
-int	init_textures(t_game *game)
+int	load_textures(t_game *game)
 {
-	game->w_north.img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_NORTH,
-			&game->w_north.width, &game->w_north.heigth);
-	if (game->w_north.img_ptr == NULL)
-		return (perror("Error loading NORTH"), 1);
-	game->w_south.img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_SOUTH,
-			&game->w_south.width, &game->w_south.heigth);
-	if (game->w_south.img_ptr == NULL)
-		return (perror("Error loading  SOUTH"), 1);
-	game->w_est.img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_EST,
-			&game->w_est.width, &game->w_est.heigth);
-	if (game->w_est.img_ptr == NULL)
-		return (perror("Error loading  EST"), 1);
-	game->w_west.img_ptr = mlx_xpm_file_to_image(game->mlx_ptr, TEXTURE_WEST,
-			&game->w_west.width, &game->w_west.heigth);
-	if (game->w_west.img_ptr == NULL)
-		return (perror("Error loading  WEST"), 1);
+	if (init_img(&game->w_north, game->mlx_ptr, TEXTURE_NORTH))
+		return (1);
+	if (init_img(&game->w_south, game->mlx_ptr, TEXTURE_SOUTH))
+		return (1);
+	if (init_img(&game->w_est, game->mlx_ptr, TEXTURE_EST))
+		return (1);
+	if (init_img(&game->w_west, game->mlx_ptr, TEXTURE_WEST))
+		return (1);
 	return (0);
 }
 
@@ -100,7 +74,7 @@ void	create_canvas(t_game *game)
 		safe_exit(game, 1);
 	game->screen.addr = mlx_get_data_addr(game->screen.img_ptr,
 			&game->screen.bpp, &game->screen.size_line, &game->screen.endian);
-	if (init_textures(game) != 0)
+	if (load_textures(game) != 0)
 		safe_exit(game, 42);
 	draw_square(game, WIDTH / 2, 30, 60);
 	draw_square(game, WIDTH / 5, 60, 20);

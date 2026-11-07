@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 20:48:16 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/06 18:27:36 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 18:30:54 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	safe_exit(t_game *game, int code)
 {
 	clear_images(game);
+	clear_paths(game);
 	if (game->map != NULL)
 	{
 		ft_strfree(game->map);
