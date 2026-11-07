@@ -16,9 +16,15 @@ void	safe_exit(t_game *game, int code)
 {
 	clear_images(game);
 	if (game->map != NULL)
+	{
 		ft_strfree(game->map);
-	if (game->mlx_ptr || game->win_ptr)
+		game->map = NULL;
+	}
+	if (game->mlx_ptr && game->win_ptr)
+	{
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+		game->win_ptr = NULL;
+	}
 	if (game->mlx_ptr)
 		mlx_destroy_display(game->mlx_ptr);
 	if (game->mlx_ptr)
