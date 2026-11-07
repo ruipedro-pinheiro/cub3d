@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 19:52:11 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:57:32 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,17 @@ static int	init_img(t_img *img, void *mlx_ptr, char *path)
 	if (img->img_ptr == NULL)
 	{
 		ft_putstr_fd("Error\nFailed loading texture in path -> ", 2);
-		ft_putendl_fd(path,2);
+		ft_putendl_fd(path, 2);
 		return (1);
 	}
 	img->addr = mlx_get_data_addr(img->img_ptr, &img->bpp,
 			&img->size_line, &img->endian);
 	if (!img->addr)
+	{
+		ft_putstr_fd("Error\nFailed loading img->addr", 2);
+		ft_putendl_fd(path, 2);
 		return (1);
+	}
 	return (0);
 }
 
