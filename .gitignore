@@ -22,6 +22,4 @@ vgcore.*
 
 # MiniLibX build artifacts
 inc/minilibx/obj/
-inc/minilibx/Makefile.gen
-inc/minilibx/test/Makefile.gen
 inc/minilibx/test/mlx-test
