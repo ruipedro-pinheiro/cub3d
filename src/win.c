@@ -37,7 +37,7 @@ int	close_window(void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
-	safe_exit(game, 1);
+	safe_exit(game, 0);
 	return (0);
 }
 
@@ -47,7 +47,7 @@ int	handle_keypressed(int keycode, void *param)
 
 	game = (t_game *)param;
 	if (keycode == 53 || keycode == 65307)
-		safe_exit(game, 1);
+		safe_exit(game, 0);
 	return (0);
 }
 
