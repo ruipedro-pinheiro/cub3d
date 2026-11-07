@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 18:22:06 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/04 18:02:50 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/05 21:52:34 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,5 @@
 # include "minilibx/mlx.h"
 # include "parsing.h"
 # include "struct.h"
+# include "mlx_win.h"
 #endif
