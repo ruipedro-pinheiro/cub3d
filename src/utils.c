@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/07 17:59:12 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 19:21:04 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:23:04 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	clear_images(t_game *game)
 int	fill_path_img(t_img *img, char *path)
 {
 	char	*path_img;
+
 	if (!path)
 	{
 		ft_putendl_fd("Error\npath (null)", 2);

@@ -6,16 +6,16 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 19:20:26 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:22:44 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
 
-static int init_img(t_img *img, void *mlx_ptr, char *path)
+static int	init_img(t_img *img, void *mlx_ptr, char *path)
 {
-	if(fill_path_img(img, path) == 1)
-		return(1);
+	if (fill_path_img(img, path) == 1)
+		return (1);
 	img->img_ptr = mlx_xpm_file_to_image(mlx_ptr, img->path,
 			&img->width, &img->heigth);
 	if (img->img_ptr == NULL)
