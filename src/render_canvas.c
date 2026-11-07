@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 19:22:44 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 19:34:58 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ static int	init_img(t_img *img, void *mlx_ptr, char *path)
 	img->img_ptr = mlx_xpm_file_to_image(mlx_ptr, img->path,
 			&img->width, &img->heigth);
 	if (img->img_ptr == NULL)
-		return (perror("Error loading NORTH"), 1);
+	{
+		ft_putstr_fd("Error:\nFailed loading texture in path -> ", 2);
+		write(2, path, ft_strlen(path));
+		return (1);
+	}
 	return (0);
 }
 
