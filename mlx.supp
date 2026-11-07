@@ -1,0 +1,10 @@
+{
+        minilibx_xwindowsevent_writev
+        Memcheck:Param
+        writev(vector[0])
+        fun:writev
+
+        ...
+        fun:XWindowEvent
+        fun:mlx_int_wait_first_expose
+    }
