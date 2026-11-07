@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 19:57:32 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 20:28:53 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,38 @@ void	draw_square(t_game *game, int x, int y, int size)
 	return ;
 }
 
+
+unsigned int	get_pixel(t_img *img, int x, int y)
+{
+	char	*src;
+
+	src = (char *)img->addr + (y * img->size_line+ x * (img->bpp/ 8));
+	return (*(unsigned int *)src);
+}
+static void render_texture(t_game *game, t_img *img, int posx, int posy)
+{
+	int x;
+	int y;
+	unsigned int color;
+
+
+	if ( posx < 0 || posx >= WIDTH || posy < 0  || posy >= HEIGHT)
+		return;
+	y = 0;
+	while (y < img->heigth)
+	{
+		x = 0;
+		while( x < img->width)
+		{
+			color = get_pixel(img, x, y);
+			if (color != 0xff000000)
+				put_pixel(posx + x , posy + y, color, game);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	create_canvas(t_game *game)
 {
 	game->screen.img_ptr = mlx_new_image(game->mlx_ptr, WIDTH, HEIGHT);
@@ -88,10 +120,12 @@ void	create_canvas(t_game *game)
 			&game->screen.bpp, &game->screen.size_line, &game->screen.endian);
 	if (load_textures(game) != 0)
 		safe_exit(game, 42);
+	render_texture(game, &game->w_north, 50, 200);
+	render_texture(game, &game->w_south, 150, 200);
+	render_texture(game, &game->w_est, 250, 200);
+	render_texture(game, &game->w_west, 350, 200);
 	draw_square(game, WIDTH / 2, 30, 60);
 	draw_square(game, WIDTH / 5, 60, 20);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->screen.img_ptr,
 		0, 0);
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->w_est.img_ptr,
-		200, 200);
 }
