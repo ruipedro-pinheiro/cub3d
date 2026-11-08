@@ -28,4 +28,6 @@ void	clear_images(t_game *game);
 void	clear_paths(t_game *game);
 int		safe_exit(t_game *game, int code);
 //
+void generate_minimap(t_game *game, int map_width, int map_height);
+
 #endif // H_WIN
