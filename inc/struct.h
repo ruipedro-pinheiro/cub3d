@@ -13,6 +13,18 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
+typedef struct s_player
+{
+	float	pos_x;
+	float	pos_y;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
+	int		rot_speed;
+	int		move_speed;
+}			t_player;
+
 typedef struct s_img
 {
 	char	*path;
