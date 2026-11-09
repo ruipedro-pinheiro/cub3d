@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 11:00:40 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/09 11:33:36 by chguerre         ###   ########.ch       */
+/*   Updated: 2026/11/09 12:02:38 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
