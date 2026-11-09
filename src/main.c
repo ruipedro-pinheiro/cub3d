@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "../inc/main.h"
-// TODO: Make clean_exit function to free anything at exit
-// it must check if it exists or not
 
 int	main(int ac, char **av)
 {

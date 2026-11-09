@@ -94,5 +94,3 @@ int	file_check(t_game *game)
 	output_validation(error, game->path_to_map);
 	return (error);
 }
-
-// TODO: Entry point to the real validation
