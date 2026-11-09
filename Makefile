@@ -10,7 +10,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -Wshadow -Wstrict-prototypes -Wpointer-arith
 VAL_FLAGS  = -g3 -O0
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
-SRC = main.c parse_prep.c
+SRC = main.c win.c parse_prep.c render_canvas.c utils.c draw.c
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 ################################################################################
@@ -42,7 +42,7 @@ all: $(NAME)
 	@printf " $(C)✅ [$(NAME)] $(B)Build complete$(X)\n"
 
 $(NAME): $(OBJ) $(LIBFT) $(MINILIB)
-	@$(CC) $(CFLAGS) -L$(LIBFT_DIR) -L$(MINILIB_DIR) $(OBJ) $(LIBFT) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
+	@$(CC) $(CFLAGS) -L$(LIBFT_DIR)  $(OBJ) $(LIBFT) -L$(MINILIB_DIR) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
 
 $(OBJDIR):
 	@mkdir -p $(OBJDIR)
@@ -61,8 +61,8 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 clean:
 	@printf "$(R) 🗑️ [$(NAME)] Cleaned$(X)\n"
 	@rm -rf $(OBJDIR)
-	@$(MAKE) -C $(LIBFT_DIR) clean --silent 
-	@$(MAKE) -C $(MINILIB_DIR) clean --silent 
+	@$(MAKE) -C $(LIBFT_DIR) clean --silent
+	@$(MAKE) -C $(MINILIB_DIR) clean --silent
 
 fclean: clean
 	@rm -f $(NAME)

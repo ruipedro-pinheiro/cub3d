@@ -18,3 +18,8 @@ vgcore.*
 .vscode/
 *.swp
 .DS_Store%  
+
+
+# MiniLibX build artifacts
+inc/minilibx/obj/
+inc/minilibx/test/mlx-test
