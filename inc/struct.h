@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 18:03:08 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/06 17:16:34 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/07 17:42:06 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 typedef struct s_img
 {
+	char	*path;
 	void	*img_ptr;
 	void	*addr;
 	int		heigth;
