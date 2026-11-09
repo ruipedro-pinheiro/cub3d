@@ -12,7 +12,7 @@
 
 #include "../../inc/main.h"
 
-//TODO: Check headers first
+// TODO: Check headers first
 /*
 	What i would need:
 	- Bool or flag for each item (C/F/NO/SO/WE/EA)
@@ -35,7 +35,9 @@ int	validate_texture_path(char *line)
 	return (0);
 }
 
-int	validate(t_game *game)
+// returning -1 equals to return when there is no headers
+// WHICH IS OK and permitted by subjet
+int	validate_headers(t_game *game)
 {
 	char	*line;
 	int		i;
@@ -47,19 +49,25 @@ int	validate(t_game *game)
 	line = game->map[i];
 	while (game->map[i])
 	{
-		if (game->map[i][j] == 'C' || game->map[i][j] == 'F')
+		if (game->map[i][0] == 'C' || game->map[i][0] == 'F')
 			errno = validate_rgb(line);
-		else if (ft_strncmp(game->map[i], "NO", 2)
-			|| ft_strncmp(game->map[i], "SO", 2)
-			|| ft_strncmp(game->map[i], "WE", 2)
+		else if (ft_strncmp(game->map[i], "NO", 2) || ft_strncmp(game->map[i],
+				"SO", 2) || ft_strncmp(game->map[i], "WE", 2)
 			|| ft_strncmp(game->map[i], "EA", 2))
 			errno = validate_texture_path(line);
 		else
-			errno = 1;
+			errno = -1;
 		i++;
-		j++;
 	}
-	if (errno)
+	return (errno);
+}
+
+int	validate(t_game *game)
+{
+	int	errno;
+
+	errno = validate_headers(game);
+	if (errno > 0)
 		return (errno);
 	return (0);
 }
