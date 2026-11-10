@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 16:12:17 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/09 12:33:16 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/10 21:40:05 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
+
+void	print_data(t_game *game)
+{
+
+	printf("PLAYER DATA:\n");
+	printf("pos_x: %f\npos_y: %f\n", game->player.pos_x, game->player.pos_y);
+	printf("dir_x: %f\ndir_y: %f\n",game->player.dir_x, game->player.dir_y);
+	printf("plane_x: %f\nplane_y: %f\n", game->player.plane_x, game->player.plane_y);
+	printf("Orientacion: %c\n", game->player.orientation);
+}
 
 // TODO: Start struct t_game here;
 int	main(int ac, char **av)
@@ -30,8 +40,7 @@ int	main(int ac, char **av)
 	if (error)
 		return (ft_strfree(game.map), error);
 	load_player_dt(&game);
-	printf("PLAYER DATA:\n");
-	printf("pos_x: N/A\npos_y: N/A\ndir_x: %f\ndir_y: %f\nplane_x: %f\nplane_y: %f\n",game.player.dir_x, game.player.dir_y, game.player.plane_x, game.player.plane_y);
+	print_data(&game);
 	run_win_mlx(&game);
 	return (safe_exit(&game, 0));
 }
