@@ -6,26 +6,36 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 11:15:41 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/10 11:06:03 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:14:24 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
 
+void *ft_strstrk(char *s1, char *s2)
+{
+	while(s1)
+	{
+		if(ft_strchr(s2,*s1))
+			return (s1);
+		s1++;
+	}
+	return (NULL);
+}
 
 int search_player_pos(t_game *game)
 {
 	int		i;
 	int		y;
 	int		x;
-	int		player;
+	int		*player;
 	int		n_player;
 
 	n_player = 0;
 	i = 0;
 	while(game->map[i] != NULL)
 	{
-		player = NULL;
+		player = ft_strstrk(game->map[i], "NSEW");
 		if (player)
 			n_player++;
 		if (n_player != 0 || n_player != 1 )
@@ -38,7 +48,7 @@ int search_player_pos(t_game *game)
 		i++;
 	}
 	x = 0;
-	while(game->map[y][x] != (char)player )
+	while(game->map[y][x] != *(char)player )
 		x++;
 	game->player.pos_y = y + 0.5;
 	game->player.pos_x = x + 0.5;
