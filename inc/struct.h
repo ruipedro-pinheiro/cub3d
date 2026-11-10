@@ -6,10 +6,11 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2026/11/10 09:46:15 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:07:39 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef STRUCT_H
 # define STRUCT_H
 
 typedef struct s_player
