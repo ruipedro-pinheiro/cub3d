@@ -35,8 +35,6 @@ int	validate_texture_path(char *line)
 	return (0);
 }
 
-// returning -1 equals to return when there is no headers
-// WHICH IS OK and permitted by subjet
 int	validate_headers(t_game *game)
 {
 	char	*line;
@@ -45,18 +43,19 @@ int	validate_headers(t_game *game)
 	int		errno;
 
 	i = 0;
-	j = 0;
-	line = game->map[i];
 	while (game->map[i])
 	{
-		if (game->map[i][0] == 'C' || game->map[i][0] == 'F')
+		line = game->map[i];
+		j = 0;
+		while (line[j] == ' ' || line[j] == '\t')
+			j++;
+		if (line[0] == 'C' || line[0] == 'F')
 			errno = validate_rgb(line);
-		else if (!ft_strncmp(game->map[i], "NO", 2) || !ft_strncmp(game->map[i],
-				"SO", 2) || !ft_strncmp(game->map[i], "WE", 2)
-			|| !ft_strncmp(game->map[i], "EA", 2))
+		else if (!ft_strncmp(line, "NO", 2) || !ft_strncmp(line, "SO", 2)
+			|| !ft_strncmp(line, "WE", 2) || !ft_strncmp(line, "EA", 2))
 			errno = validate_texture_path(line);
-		else
-			errno = -1;
+		else if (line[0] == '\n')
+			i++;
 		i++;
 	}
 	return (errno);
