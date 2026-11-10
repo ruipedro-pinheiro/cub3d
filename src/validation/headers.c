@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 17:46:48 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/10 17:57:12 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/10 18:06:46 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,26 @@ static int	is_identifier(char *line)
 	return (HEADER_INVALID);
 }
 
+static int	register_header(char *line, bool seen[6])
+{
+	int	id;
+
+	id = is_identifier(line);
+	if (id == HEADER_INVALID || seen[id])
+		return (1);
+	seen[id] = true;
+	return (0);
+}
+
 int	validate_headers(t_game *game)
 {
 	char	*line;
 	int		i;
 	int		j;
-	int		id;
 	bool	seen[6];
 
-	ft_bzero(seen, sizeof(seen));
 	i = 0;
+	ft_bzero(seen, sizeof(seen));
 	while (game->map[i])
 	{
 		line = game->map[i];
@@ -47,13 +57,12 @@ int	validate_headers(t_game *game)
 			j++;
 		line += j;
 		if (line[0] == '\n')
+		{
 			i++;
-		id = is_identifier(line);
-		if (id == HEADER_INVALID)
+			continue ;
+		}
+		if (register_header(line, seen))
 			return (1);
-		if (seen[id])
-			return (1);
-		seen[id] = true;
 		i++;
 	}
 	return (0);
