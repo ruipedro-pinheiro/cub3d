@@ -6,11 +6,44 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 11:15:41 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/09 12:17:59 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/10 11:06:03 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/main.h"
+
+
+int search_player_pos(t_game *game)
+{
+	int		i;
+	int		y;
+	int		x;
+	int		player;
+	int		n_player;
+
+	n_player = 0;
+	i = 0;
+	while(game->map[i] != NULL)
+	{
+		player = NULL;
+		if (player)
+			n_player++;
+		if (n_player != 0 || n_player != 1 )
+		{
+			ft_putendl_fd("Error", 2);
+			ft_putendl_fd("Is more than only one player in the map", 2);
+			return (1);
+		}
+		y = i;
+		i++;
+	}
+	x = 0;
+	while(game->map[y][x] != (char)player )
+		x++;
+	game->player.pos_y = y + 0.5;
+	game->player.pos_x = x + 0.5;
+	game->player.orientation = game->map[y][x];
+}
 
 
 static int	set_player_plane(t_player *player, const int dir)
@@ -41,12 +74,11 @@ static int	set_player_dir(t_player *player, const int dir)
 
 int	load_player_dt(t_game *game)
 {
-	t_player	player;
 	int			orientation;
 
 	(void)game;
-	orientation = ON;
-	set_player_dir(&player, orientation);
-	set_player_plane(&player, orientation);
+	orientation = OW;
+	set_player_dir(&game->player, orientation);
+	set_player_plane(&game->player, orientation);
 	return (1);
 }

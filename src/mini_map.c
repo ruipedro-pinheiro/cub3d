@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 00:09:28 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/08 01:15:51 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/09 12:36:45 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void generate_minimap(t_game *game, int map_width, int map_height)
 			pos_y = MINI_OFFSET_Y + (my * MINISCALE);
 			draw_square_tile(game, pos_x, pos_y, MINISCALE, color );
 			mx++;
-			ft_putendl_fd("@", 2);
 		}
 		my++;
 	}

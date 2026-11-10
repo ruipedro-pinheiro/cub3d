@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/04 18:03:08 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/10 09:43:37 by chguerre         ###   ########.fr       */
+/*   Created: Invalid date        by                   #+#    #+#             */
+/*   Updated: 2026/11/10 09:46:15 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
 # define STRUCT_H
 
 typedef struct s_player
@@ -40,18 +39,19 @@ typedef struct s_img
 
 typedef struct s_game
 {
-	int		map_fd;
-	void	*mlx_ptr;
-	void	*win_ptr;
-	char	**map;
-	char	*path_to_map;
-	int		count_lines;
-	int		max_length;
+	int			map_fd;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	char		**map;
+	char		*path_to_map;
+	int			count_lines;
+	int			max_length;
+	t_player	player;
 
-	t_img	screen;
-	t_img	w_north;
-	t_img	w_south;
-	t_img	w_est;
-	t_img	w_west;
+	t_img		screen;
+	t_img		w_north;
+	t_img		w_south;
+	t_img		w_est;
+	t_img		w_west;
 }			t_game;
 #endif

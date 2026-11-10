@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 11:00:40 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/09 12:02:38 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/09 12:19:47 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ enum	e_orient
 	OW
 };
 
+int	load_player_dt(t_game *game);
 #endif // PLAYER_H
