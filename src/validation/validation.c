@@ -51,9 +51,9 @@ int	validate_headers(t_game *game)
 	{
 		if (game->map[i][0] == 'C' || game->map[i][0] == 'F')
 			errno = validate_rgb(line);
-		else if (ft_strncmp(game->map[i], "NO", 2) || ft_strncmp(game->map[i],
-				"SO", 2) || ft_strncmp(game->map[i], "WE", 2)
-			|| ft_strncmp(game->map[i], "EA", 2))
+		else if (!ft_strncmp(game->map[i], "NO", 2) || !ft_strncmp(game->map[i],
+				"SO", 2) || !ft_strncmp(game->map[i], "WE", 2)
+			|| !ft_strncmp(game->map[i], "EA", 2))
 			errno = validate_texture_path(line);
 		else
 			errno = -1;
