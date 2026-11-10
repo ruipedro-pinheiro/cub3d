@@ -29,6 +29,8 @@ static void	output_validation(int error, char *path_to_map)
 
 static bool	check_extension(char *str, int len)
 {
+	if (len < 4)
+		return (false);
 	if (str[len - 1] == 'b' && str[len - 2] == 'u' && str[len - 3] == 'c'
 		&& str[len - 4] == '.')
 		return (true);
@@ -41,8 +43,7 @@ static char	**expand_map(char **map, int count_len, int i, char *line)
 
 	new = malloc(sizeof(char *) * (count_len + 2));
 	if (!new)
-		return (ft_putendl_fd("Error: couldn't malloc new map", 2)
-			, ft_strfree(map), free(line), NULL);
+		return (ft_putendl_fd("Error: couldn't malloc new map", 2), NULL);
 	while (++i < count_len)
 		new[i] = map[i];
 	free(map);
@@ -55,22 +56,24 @@ int	dup_map(t_game *game, int fd)
 {
 	char	*line;
 	char	**map;
+	char	**tmp;
 	int		count_len;
 	int		i;
 
 	map = NULL;
-	count_len = 0;
-	while (1)
+	count_len = -1;
+	while (++count_len >= 0)
 	{
 		i = -1;
 		line = get_next_line(fd);
 		if (!line || !line[0])
 			break ;
-		map = expand_map(map, count_len, i, line);
-		if (!map)
-			break ;
-		count_len++;
+		tmp = expand_map(map, count_len, i, line);
+		if (!tmp)
+			return (ft_strfree(map), free(line), close(fd), 1);
+		map = tmp;
 	}
+	close(fd);
 	if (!map)
 		return (1);
 	return (game->map = map, 0);
@@ -78,8 +81,8 @@ int	dup_map(t_game *game, int fd)
 
 int	file_check(t_game *game)
 {
-	int		map_fd;
-	int		error;
+	int	map_fd;
+	int	error;
 
 	error = 0;
 	map_fd = open(game->path_to_map, O_RDONLY);
