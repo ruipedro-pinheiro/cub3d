@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 18:03:08 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/07 17:42:06 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/10 09:43:37 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_player
 	float	dir_y;
 	float	plane_x;
 	float	plane_y;
+	char	orientation;
 	int		rot_speed;
 	int		move_speed;
 }			t_player;
