@@ -31,7 +31,7 @@ jobs:
       with:
         submodules: recursive
     - name: install build dependencies
-      run: sudo apt-get update && sudo apt-get install -y libx11-dev libxext-dev
+      run: sudo apt-get update && sudo apt-get install -y libx11-dev libxext-dev libbsd-dev
     - name: make
       run: make
     - name: cub3d

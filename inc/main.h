@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 18:22:06 by rpinheir          #+#    #+#             */
 /*   Updated: 2026/11/11 10:49:33 by rpinheir         ###   ########.ch       */
@@ -18,4 +18,6 @@
 # include "minilibx/mlx.h"
 # include "parsing.h"
 # include "struct.h"
+# include "mlx_win.h"
+# include "textures.h"
 #endif

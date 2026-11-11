@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 16:12:17 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/05 18:02:43 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/07 20:48:58 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	main(int ac, char **av)
 	t_game	game;
 	int		error;
 
+	ft_bzero(&game, sizeof(game));
 	game.map = NULL;
 	if (ac != 2)
 	{
@@ -26,6 +27,7 @@ int	main(int ac, char **av)
 	game.path_to_map = av[1];
 	error = file_check(&game);
 	if (error)
-		return (error);
-	return (0);
+		return (ft_strfree(game.map), error);
+	run_win_mlx(&game);
+	return (safe_exit(&game, 0));
 }
