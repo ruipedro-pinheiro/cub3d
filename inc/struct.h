@@ -49,6 +49,8 @@ typedef struct s_game
 	int			count_lines;
 	int			max_length;
 	int			cursor;
+	int			c_color[3];
+	int			f_color[3];
 	t_player	player;
 
 	t_img		screen;
