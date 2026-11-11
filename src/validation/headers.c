@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 17:46:48 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/10 18:06:46 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/11 11:00:24 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,9 @@ static int	verify_registerd_headers(bool *seen)
 	{
 		if (!seen[i])
 		{
-			ft_putstr_fd("Error\nmissing header ", 2);
-			ft_putendl_fd(get_header_name(i), 2);
+			ft_putstr_fd(FG_BOLD_RED "Error\nmissing header ", 2);
+			ft_putstr_fd(get_header_name(i), 2);
+			ft_putendl_fd(FG_DEFAULT, 2);
 			return (1);
 		}
 		i++;
