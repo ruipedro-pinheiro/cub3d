@@ -22,15 +22,7 @@ void	*ft_strstrk(char *s1, char *s2)
 	}
 	return (NULL);
 }
-
-int	search_player_pos(t_game *game)
-{
-	int	i;
-	int	y;
-	int	x;
-	int	*player;
-	int	n_player;
-
+/*
 	n_player = 0;
 	i = 0;
 	while (game->map[i] != NULL)
@@ -49,10 +41,19 @@ int	search_player_pos(t_game *game)
 	}
 	x = 0;
 	while (game->map[y][x] != *(char)player)
-		x++;
+		x++;*/
+
+int	search_player_pos(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	x = 0;
 	game->player.pos_y = y + 0.5;
 	game->player.pos_x = x + 0.5;
 	game->player.orientation = game->map[y][x];
+	return (0);
 }
 
 static int	set_player_plane(t_player *player, const int dir)
