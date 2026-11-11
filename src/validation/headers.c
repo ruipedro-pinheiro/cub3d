@@ -36,8 +36,9 @@ static int	register_header(char *line, bool seen[6], t_game *game)
 	id = is_identifier(line);
 	if (id == HEADER_INVALID || seen[id])
 		return (1);
-	if (validate_texture_path(game, line, id))
-		seen[id] = true;
+	if (id <= HEADER_EA && validate_texture_path(game, line, id))
+		return (1);
+	seen[id] = true;
 	return (0);
 }
 
@@ -93,7 +94,7 @@ int	validate_headers(t_game *game)
 		while (line[j] == ' ' || line[j] == '\t')
 			j++;
 		line += j;
-		if (line[0] == '\n')
+		if (line[0] == '\n' || line[0] == '\0')
 		{
 			game->cursor++;
 			continue ;

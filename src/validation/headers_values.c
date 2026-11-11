@@ -18,6 +18,20 @@ int	validate_rgb(char *line)
 	return (0);
 }
 
+static int	check_path(t_img *img)
+{
+	int		fd;
+
+	if (!img->path || !img->path[0])
+		return (ft_putendl_fd(FG_BOLD_RED "Error\n couldn't setup wall textures"
+				FG_DEFAULT, 2), 1);
+	fd = open(img->path, O_RDONLY);
+	if (fd == -1)
+		return (close(fd), ft_putendl_fd("Error\n, couldn't open file", 2), 1);
+	close(fd);
+	return (0);
+}
+
 int	validate_texture_path(t_game *game, char *line, int id)
 {
 	int		i;
@@ -38,8 +52,7 @@ int	validate_texture_path(t_game *game, char *line, int id)
 	else
 		return (1);
 	img->path = ft_strdup(line + i);
-	if (!img->path || !img->path[0])
-		return (ft_putendl_fd(FG_BOLD_RED "Error\n couldn't setup wall textures"
-				FG_DEFAULT, 2), 1);
+	if (check_path(img))
+		return (1);
 	return (0);
 }
