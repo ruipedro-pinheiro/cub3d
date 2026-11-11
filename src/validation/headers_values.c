@@ -18,8 +18,27 @@ int	validate_rgb(char *line)
 	return (0);
 }
 
-int	validate_texture_path(char *line)
+int	validate_texture_path(t_game *game, char *line, int id)
 {
-	(void)line;
+	int		i;
+	t_img	*img;
+
+	i = 1;
+	while (line[++i] == ' ' || line[++i] == '\t')
+		;
+	if (id == HEADER_NO)
+		img = &game->w_north;
+	else if (id == HEADER_SO)
+		img = &game->w_south;
+	else if (id == HEADER_WE)
+		img = &game->w_west;
+	else if (id == HEADER_EA)
+		img = &game->w_est;
+	else
+		return (1);
+	img->path = ft_strtrim(line, "\n");
+	if (!img->path || !img->path[0])
+		return (ft_putendl_fd(FG_BOLD_RED "Error\n couldn't setup wall textures"
+				FG_DEFAULT, 2), 1);
 	return (0);
 }
