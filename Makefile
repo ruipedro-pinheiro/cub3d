@@ -18,7 +18,9 @@ SRC = main.c \
 	  win.c \
 	  render_canvas.c \
 	  utils.c \
-	  draw.c 
+	  draw.c \
+      mini_map.c \
+      player.c
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 ################################################################################
