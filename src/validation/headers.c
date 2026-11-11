@@ -29,14 +29,15 @@ static int	is_identifier(char *line)
 	return (HEADER_INVALID);
 }
 
-static int	register_header(char *line, bool seen[6])
+static int	register_header(char *line, bool seen[6], t_game *game)
 {
 	int	id;
 
 	id = is_identifier(line);
 	if (id == HEADER_INVALID || seen[id])
 		return (1);
-	seen[id] = true;
+	if (validate_texture_path(game, line, id))
+		seen[id] = true;
 	return (0);
 }
 
@@ -99,7 +100,7 @@ int	validate_headers(t_game *game)
 		}
 		if (line[j] == '1')
 			break ;
-		if (register_header(line, seen))
+		if (register_header(line, seen, game))
 			return (1);
 		game->cursor++;
 	}
