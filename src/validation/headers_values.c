@@ -12,22 +12,24 @@
 
 #include "../../inc/main.h"
 
-int	check_value(char *line, int value, int *result, int j)
+int	check_value(char *line, int *i, int *result, int j)
 {
-	int	i;
+	int	value;
 
-	i = 0;
-	while (ft_isdigit(line[i]))
+	value = 0;
+	while (ft_isdigit(line[*i]))
 	{
-		value = value * 10 + (line[i++] - '0');
+		value = value * 10 + (line[(*i)++] - '0');
 		if (value > 255)
-			return (1);
+			return (ft_putendl_fd("Error\nRGB value over 255", 2), 1);
 	}
-	if (line[i] == ',')
+	if (line[*i] == ',')
 	{
 		result[j] = value;
-		i++;
+		(*i)++;
 	}
+	else if (j == 2 && result[2])
+		return (0);
 	else
 		return (ft_putendl_fd("Error\ninvalid RGB format", 2), 1);
 	return (0);
@@ -36,13 +38,11 @@ int	check_value(char *line, int value, int *result, int j)
 int	validate_rgb(t_game *game, char *line, int id)
 {
 	int	i;
-	int	value;
 	int	count;
 	int	*result;
 
 	count = -1;
 	i = 1;
-	value = 0;
 	if (id == HEADER_F)
 		result = game->f_color;
 	else
@@ -51,8 +51,10 @@ int	validate_rgb(t_game *game, char *line, int id)
 		i++;
 	while (++count < 3)
 	{
-		check_value(line + i, value, result, count);
+		if (check_value(line, &i, result, count))
+			return (1);
 	}
+	printf("RGB: %d, %d, %d\n", result[0], result[1], result[2]);
 	return (0);
 }
 
@@ -61,8 +63,8 @@ static int	check_path(t_img *img)
 	int	fd;
 
 	if (!img->path || !img->path[0])
-		return (ft_putendl_fd(FG_BOLD_RED "Error\n couldn't setup wall textures"
-				FG_DEFAULT, 2), 1);
+		return (ft_putendl_fd(FG_BOLD_RED "Error\n couldn't setup wall textures" FG_DEFAULT,
+				2), 1);
 	fd = open(img->path, O_RDONLY);
 	if (fd == -1)
 		return (close(fd), ft_putendl_fd("Error\n, couldn't open file", 2), 1);
