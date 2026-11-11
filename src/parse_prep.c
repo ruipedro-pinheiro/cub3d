@@ -21,8 +21,6 @@
 
 static void	output_validation(int error, char *path_to_map)
 {
-	if (error == 1)
-		(ft_putstr(path_to_map), ft_putendl_fd(" is not valid", 2));
 	if (error == -1)
 		(ft_putstr(path_to_map), ft_putendl_fd(" does not exist", 2));
 }

@@ -63,11 +63,11 @@ static int	verify_registerd_headers(bool *seen)
 	int	i;
 
 	i = 0;
-	while (i <= 5)
+	while (i < 6)
 	{
 		if (!seen[i])
 		{
-			ft_putstr_fd("Error: missing header ", 2);
+			ft_putstr_fd("Error\nmissing header ", 2);
 			ft_putendl_fd(get_header_name(i), 2);
 			return (1);
 		}
