@@ -35,7 +35,7 @@ static int	register_header(char *line, bool seen[6], t_game *game)
 
 	id = is_identifier(line);
 	if (id == HEADER_INVALID || seen[id])
-		return (1);
+		return (ft_putendl_fd("Error\ninvalid or duplicate header", 2), 1);
 	if (id <= HEADER_EA)
 	{
 		if (validate_texture_path(game, line, id))

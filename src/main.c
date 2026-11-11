@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 	game.path_to_map = av[1];
 	error = file_check(&game);
 	if (error)
-		return (ft_strfree(game.map), error);
+		return (safe_exit(&game, error));
 	load_player_dt(&game);
 	ft_putendl_fd("PLAYER DATA:", 1);
 	ft_putendl_fd("pos_x: N/A\npos_y: N/A", 1);

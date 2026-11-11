@@ -26,6 +26,8 @@ int	check_value(char *line, int *i, int *result, int j)
 			return (ft_putendl_fd("Error\nRGB value over 255", 2), 1);
 	}
 	result[j] = value;
+	while (line[*i] == ' ' || line[*i] == '\t')
+		(*i)++;
 	if (j == 2 && line[*i] == '\0')
 		return (0);
 	if (j < 2 && line[*i] == ',')
@@ -49,6 +51,8 @@ int	validate_rgb(t_game *game, char *line, int id)
 		i++;
 	while (++count < 3)
 	{
+		while (line[i] == ' ' || line[i] == '\t')
+			i++;
 		if (check_value(line, &i, result, count))
 			return (1);
 	}
@@ -64,7 +68,7 @@ static int	check_path(t_img *img)
 		return (ft_putendl_fd("Error\n couldn't setup wall textures", 2), 1);
 	fd = open(img->path, O_RDONLY);
 	if (fd == -1)
-		return (close(fd), ft_putendl_fd("Error\n, couldn't open file", 2), 1);
+		return (ft_putendl_fd("Error\ncouldn't open texture", 2), 1);
 	close(fd);
 	return (0);
 }
@@ -88,7 +92,7 @@ int	validate_texture_path(t_game *game, char *line, int id)
 		img = &game->w_est;
 	else
 		return (1);
-	img->path = ft_strdup(line + i);
+	img->path = ft_strtrim(line + i, " \t");
 	if (check_path(img))
 		return (1);
 	return (0);

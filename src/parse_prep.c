@@ -22,7 +22,10 @@
 static void	output_validation(int error, char *path_to_map)
 {
 	if (error == -1)
-		(ft_putstr(path_to_map), ft_putendl_fd(" does not exist", 2));
+	{
+		ft_putstr_fd("Error\ncannot open map: ", 2);
+		ft_putendl_fd(path_to_map, 2);
+	}
 }
 
 static bool	check_extension(char *str, int len)
@@ -68,12 +71,12 @@ int	dup_map(t_game *game, int fd)
 			break ;
 		tmp = expand_map(map, count_len, -1, line);
 		if (!tmp)
-			return (ft_strfree(map), free(line), close(fd), 1);
+			return (ft_strfree(map), free(line), close(fd), -1);
 		map = tmp;
 	}
 	close(fd);
 	if (!map)
-		return (1);
+		return (ft_putendl_fd("Error\nempty map file", 2), 1);
 	return (game->map = map, 0);
 }
 
@@ -87,11 +90,14 @@ int	file_check(t_game *game)
 	if (map_fd == -1)
 		return (output_validation(error = -1, game->path_to_map), error);
 	if (!check_extension(game->path_to_map, ft_strlen(game->path_to_map)))
-		error = 1;
-	if (dup_map(game, map_fd))
-		return (-1);
+	{
+		close(map_fd);
+		return (ft_putendl_fd("Error\ninvalid .cub extension", 2), 1);
+	}
+	error = dup_map(game, map_fd);
+	if (error)
+		return (error);
 	if (validate(game))
-		error = 1;
-	output_validation(error, game->path_to_map);
-	return (error);
+		return (1);
+	return (0);
 }
