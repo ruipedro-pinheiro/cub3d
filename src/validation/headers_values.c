@@ -12,19 +12,16 @@
 
 #include "../../inc/main.h"
 
-int	check_value(char *line, int value, int *result)
+int	check_value(char *line, int value, int *result, int j)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (ft_isdigit(line[i++]))
+	while (ft_isdigit(line[i]))
 	{
-		value = value * 10 + (line[i] - '0');
+		value = value * 10 + (line[i++] - '0');
 		if (value > 255)
-			return (ft_putendl_fd("Error\nRGB value is bigger than 255", 2),
-				(1));
+			return (1);
 	}
 	if (line[i] == ',')
 	{
@@ -54,7 +51,7 @@ int	validate_rgb(t_game *game, char *line, int id)
 		i++;
 	while (++count < 3)
 	{
-		check_value(line, value, result);
+		check_value(line + i, value, result, count);
 	}
 	return (0);
 }
