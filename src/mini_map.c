@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 00:09:28 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/10 23:14:38 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/11 23:13:10 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,5 @@ void generate_minimap(t_game *game, int map_width, int map_height)
 		my++;
 	}
 	posicion_minimapa(game, mini_pos);
-	draw_square_tile(game, mini_pos[0],  mini_pos[1], 10, 0xFF0000);
+	draw_square_tile(game,mini_pos[0], mini_pos[1], 10, 0xFF0000);
 }
