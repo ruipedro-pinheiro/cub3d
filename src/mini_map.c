@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 00:09:28 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/11 23:13:10 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/12 00:17:39 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,27 @@ unsigned int select_color(char c, char orientation)
 		return(0x1E293B);
 	return (0);
 }
+
+static void draw_minimap_player(t_game *game, int px, int py)
+{
+    int size;
+    int x;
+    int y;
+    size = 4;
+
+    y = -size / 2;
+    while (y < size / 2)
+    {
+        x = -size / 2;
+        while (x < size / 2)
+        {
+            put_pixel(px + x, py + y, 0x00FF0000, game); 
+            x++;
+        }
+        y++;
+    }
+}
+
 
 void draw_square_tile(t_game *game, float pos_x, float pos_y, int scale, unsigned int color )
 {
@@ -94,5 +115,6 @@ void generate_minimap(t_game *game, int map_width, int map_height)
 		my++;
 	}
 	posicion_minimapa(game, mini_pos);
-	draw_square_tile(game,mini_pos[0], mini_pos[1], 10, 0xFF0000);
+	draw_minimap_player(game,mini_pos[0], mini_pos[1]);
+	//draw_square_tile(game,mini_pos[0], mini_pos[1], 10, 0xFF0000);
 }
