@@ -43,7 +43,7 @@ static char	**expand_map(char **map, int count_len, int i, char *line)
 	if (!new)
 		return (ft_putendl_fd("Error: couldn't malloc new map", 2), NULL);
 	while (++i < count_len)
-		new[i] = ft_strtrim(map[i], "\n");
+		new[i] = map[i];
 	free(map);
 	new[count_len] = line;
 	new[count_len + 1] = NULL;
@@ -62,8 +62,10 @@ int	dup_map(t_game *game, int fd)
 	count_len = -1;
 	while (++count_len >= 0)
 	{
-		i = -1;
 		line = get_next_line(fd);
+		i = ft_strlen(line);
+		if (i > 0 && line[i - 1] == '\n')
+			line[i - 1] = '\0';
 		if (!line || !line[0])
 			break ;
 		tmp = expand_map(map, count_len, i, line);
