@@ -12,15 +12,56 @@
 
 #include "../../inc/main.h"
 
-int	validate_rgb(char *line)
+int	check_value(char *line, int value, int *result)
 {
-	(void)line;
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (ft_isdigit(line[i++]))
+	{
+		value = value * 10 + (line[i] - '0');
+		if (value > 255)
+			return (ft_putendl_fd("Error\nRGB value is bigger than 255", 2),
+				(1));
+	}
+	if (line[i] == ',')
+	{
+		result[j] = value;
+		i++;
+	}
+	else
+		return (ft_putendl_fd("Error\ninvalid RGB format", 2), 1);
+	return (0);
+}
+
+int	validate_rgb(t_game *game, char *line, int id)
+{
+	int	i;
+	int	value;
+	int	count;
+	int	*result;
+
+	count = -1;
+	i = 1;
+	value = 0;
+	if (id == HEADER_F)
+		result = game->f_color;
+	else
+		result = game->c_color;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	while (++count < 3)
+	{
+		check_value(line, value, result);
+	}
 	return (0);
 }
 
 static int	check_path(t_img *img)
 {
-	int		fd;
+	int	fd;
 
 	if (!img->path || !img->path[0])
 		return (ft_putendl_fd(FG_BOLD_RED "Error\n couldn't setup wall textures"
