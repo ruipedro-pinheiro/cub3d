@@ -36,7 +36,12 @@ static int	register_header(char *line, bool seen[6], t_game *game)
 	id = is_identifier(line);
 	if (id == HEADER_INVALID || seen[id])
 		return (1);
-	if (id <= HEADER_EA && validate_texture_path(game, line, id))
+	if (id <= HEADER_EA)
+	{
+		if (validate_texture_path(game, line, id))
+			return (1);
+	}
+	else if (validate_rgb(game, line, id))
 		return (1);
 	seen[id] = true;
 	return (0);
