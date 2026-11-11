@@ -14,11 +14,11 @@
 
 void	print_data(t_game *game)
 {
-
 	printf("PLAYER DATA:\n");
 	printf("pos_x: %f\npos_y: %f\n", game->player.pos_x, game->player.pos_y);
-	printf("dir_x: %f\ndir_y: %f\n",game->player.dir_x, game->player.dir_y);
-	printf("plane_x: %f\nplane_y: %f\n", game->player.plane_x, game->player.plane_y);
+	printf("dir_x: %f\ndir_y: %f\n", game->player.dir_x, game->player.dir_y);
+	printf("plane_x: %f\nplane_y: %f\n", game->player.plane_x,
+		game->player.plane_y);
 	printf("Orientacion: %c\n", game->player.orientation);
 }
 

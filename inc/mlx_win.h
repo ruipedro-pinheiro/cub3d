@@ -17,6 +17,9 @@
 # define TEXTURE_SOUTH "assets/textures/south.xpm"
 # define TEXTURE_WEST "assets/textures/west.xpm"
 # define TEXTURE_EST "assets/textures/est.xpm"
+# define MINISCALE 40
+# define MINI_OFFSET_X 100
+# define MINI_OFFSET_Y 400
 # define HEIGHT 1080
 # define WIDTH 720
 

@@ -70,7 +70,6 @@ int	run_win_mlx(t_game *game)
 	create_canvas(game);
 	mlx_hook(game->win_ptr, 2, 1L << 0, (void *)handle_keypressed, game);
 	mlx_hook(game->win_ptr, 17, 9, (void *)close_window, game);
-
 	mlx_loop(game->mlx_ptr);
 	return (0);
 }
