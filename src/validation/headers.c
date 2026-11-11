@@ -40,30 +40,67 @@ static int	register_header(char *line, bool seen[6])
 	return (0);
 }
 
+static char	*get_header_name(int i)
+{
+	if (i == HEADER_NO)
+		return ("NO");
+	else if (i == HEADER_SO)
+		return ("SO");
+	else if (i == HEADER_WE)
+		return ("WE");
+	else if (i == HEADER_EA)
+		return ("EA");
+	else if (i == HEADER_F)
+		return ("F");
+	else if (i == HEADER_C)
+		return ("C");
+	else
+		return (NULL);
+}
+
+static int	verify_registerd_headers(bool *seen)
+{
+	int	i;
+
+	i = 0;
+	while (i <= 5)
+	{
+		if (!seen[i])
+		{
+			ft_putstr_fd("Error: missing header ", 2);
+			ft_putendl_fd(get_header_name(i), 2);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 int	validate_headers(t_game *game)
 {
 	char	*line;
-	int		i;
 	int		j;
 	bool	seen[6];
 
-	i = 0;
+	game->cursor = 0;
 	ft_bzero(seen, sizeof(seen));
-	while (game->map[i])
+	while (game->map[game->cursor])
 	{
-		line = game->map[i];
+		line = game->map[game->cursor];
 		j = 0;
 		while (line[j] == ' ' || line[j] == '\t')
 			j++;
 		line += j;
 		if (line[0] == '\n')
 		{
-			i++;
+			game->cursor++;
 			continue ;
 		}
+		if (line[j] == '1')
+			break ;
 		if (register_header(line, seen))
 			return (1);
-		i++;
+		game->cursor++;
 	}
-	return (0);
+	return (verify_registerd_headers(seen));
 }
