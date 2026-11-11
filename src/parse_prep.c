@@ -35,6 +35,7 @@ static bool	check_extension(char *str, int len)
 	return (false);
 }
 
+// TODO: May refactor this to remove \n directly when duplicating map
 static char	**expand_map(char **map, int count_len, int i, char *line)
 {
 	char	**new;
