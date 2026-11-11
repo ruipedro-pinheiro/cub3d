@@ -35,7 +35,6 @@ static bool	check_extension(char *str, int len)
 	return (false);
 }
 
-// TODO: May refactor this to remove \n directly when duplicating map
 static char	**expand_map(char **map, int count_len, int i, char *line)
 {
 	char	**new;
@@ -44,7 +43,7 @@ static char	**expand_map(char **map, int count_len, int i, char *line)
 	if (!new)
 		return (ft_putendl_fd("Error: couldn't malloc new map", 2), NULL);
 	while (++i < count_len)
-		new[i] = map[i];
+		new[i] = ft_strtrim(map[i], "\n");
 	free(map);
 	new[count_len] = line;
 	new[count_len + 1] = NULL;
