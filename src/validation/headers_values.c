@@ -28,7 +28,7 @@ int	check_value(char *line, int *i, int *result, int j)
 		result[j] = value;
 		(*i)++;
 	}
-	else if (j == 2 && result[2])
+	else if (j == 2 && (result[0] >= 0 && result[1] >= 0 && result[2] >= 0))
 		return (0);
 	else
 		return (ft_putendl_fd("Error\ninvalid RGB format", 2), 1);
