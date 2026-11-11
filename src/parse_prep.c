@@ -68,7 +68,7 @@ int	dup_map(t_game *game, int fd)
 			line[i - 1] = '\0';
 		if (!line || !line[0])
 			break ;
-		tmp = expand_map(map, count_len, i, line);
+		tmp = expand_map(map, count_len, -1, line);
 		if (!tmp)
 			return (ft_strfree(map), free(line), close(fd), 1);
 		map = tmp;
