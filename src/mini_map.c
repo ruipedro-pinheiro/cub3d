@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/08 00:09:28 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/12 00:17:39 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/12 00:19:42 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ unsigned int select_color(char c, char orientation)
 	return (0);
 }
 
-static void draw_minimap_player(t_game *game, int px, int py)
+static void	draw_minimap_player(t_game *game, int px, int py)
 {
-    int size;
-    int x;
-    int y;
-    size = 4;
+	int size;
+	int x;
+	int y;
+	size = 4;
 
-    y = -size / 2;
-    while (y < size / 2)
-    {
-        x = -size / 2;
-        while (x < size / 2)
-        {
-            put_pixel(px + x, py + y, 0x00FF0000, game); 
-            x++;
-        }
-        y++;
-    }
+	y = -size / 2;
+	while (y < size / 2)
+	{
+		x = -size / 2;
+		while (x < size / 2)
+		{
+			put_pixel(px + x, py + y, 0x00FF0000, game);
+			x++;
+		}
+		y++;
+	}
 }
 
 
