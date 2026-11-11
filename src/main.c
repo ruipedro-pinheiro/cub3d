@@ -29,8 +29,11 @@ int	main(int ac, char **av)
 	if (error)
 		return (ft_strfree(game.map), error);
 	load_player_dt(&game);
-	printf("PLAYER DATA:\n");
-	printf("pos_x: N/A\npos_y: N/A\ndir_x: %f\ndir_y: %f\nplane_x: %f\nplane_y: %f\n",game.player.dir_x, game.player.dir_y, game.player.plane_x, game.player.plane_y);
+	ft_putendl_fd("PLAYER DATA:", 1);
+	ft_putendl_fd("pos_x: N/A\npos_y: N/A", 1);
+	printf("dir_x: %f\ndir_y: %f", game.player.dir_x, game.player.dir_y);
+	printf("plane_x: %f\nplane_y: %f\n", game.player.plane_x,
+		game.player.plane_y);
 	run_win_mlx(&game);
 	return (safe_exit(&game, 0));
 }

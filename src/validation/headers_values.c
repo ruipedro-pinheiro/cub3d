@@ -63,8 +63,7 @@ static int	check_path(t_img *img)
 	int	fd;
 
 	if (!img->path || !img->path[0])
-		return (ft_putendl_fd(FG_BOLD_RED "Error\n couldn't setup wall textures" FG_DEFAULT,
-				2), 1);
+		return (ft_putendl_fd("Error\n couldn't setup wall textures", 2), 1);
 	fd = open(img->path, O_RDONLY);
 	if (fd == -1)
 		return (close(fd), ft_putendl_fd("Error\n, couldn't open file", 2), 1);

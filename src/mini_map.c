@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../inc/main.h"
-
+/*
 #define MINISCALE 20
 #define MINI_OFFSET_X 500
 #define MINI_OFFSET_Y 200
@@ -80,4 +80,4 @@ void	generate_minimap(t_game *game, int map_width, int map_height)
 		}
 		my++;
 	}
-}
+}*/
