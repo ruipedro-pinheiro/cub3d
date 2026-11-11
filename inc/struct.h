@@ -15,28 +15,28 @@
 
 typedef struct s_player
 {
-	float	pos_x;
-	float	pos_y;
-	float	dir_x;
-	float	dir_y;
-	float	plane_x;
-	float	plane_y;
-	char	orientation;
-	int		rot_speed;
-	int		move_speed;
-}			t_player;
+	float		pos_x;
+	float		pos_y;
+	float		dir_x;
+	float		dir_y;
+	float		plane_x;
+	float		plane_y;
+	char		orientation;
+	int			rot_speed;
+	int			move_speed;
+}				t_player;
 
 typedef struct s_img
 {
-	char	*path;
-	void	*img_ptr;
-	void	*addr;
-	int		heigth;
-	int		width;
-	int		bpp;
-	int		endian;
-	int		size_line;
-}			t_img;
+	char		*path;
+	void		*img_ptr;
+	void		*addr;
+	int			heigth;
+	int			width;
+	int			bpp;
+	int			endian;
+	int			size_line;
+}				t_img;
 
 typedef struct s_game
 {
@@ -45,8 +45,10 @@ typedef struct s_game
 	void		*win_ptr;
 	char		**map;
 	char		*path_to_map;
+	int			cursorcreate_ca;
 	int			count_lines;
 	int			max_length;
+	int			cursor;
 	t_player	player;
 
 	t_img		screen;
@@ -54,5 +56,5 @@ typedef struct s_game
 	t_img		w_south;
 	t_img		w_est;
 	t_img		w_west;
-}			t_game;
+}				t_game;
 #endif

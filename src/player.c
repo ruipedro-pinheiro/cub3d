@@ -12,33 +12,33 @@
 
 #include "../inc/main.h"
 
-void *ft_strstrk(char *s1, char *s2)
+void	*ft_strstrk(char *s1, char *s2)
 {
-	while(s1)
+	while (s1)
 	{
-		if(ft_strchr(s2,*s1))
+		if (ft_strchr(s2, *s1))
 			return (s1);
 		s1++;
 	}
 	return (NULL);
 }
 
-int search_player_pos(t_game *game)
+int	search_player_pos(t_game *game)
 {
-	int		i;
-	int		y;
-	int		x;
-	int		*player;
-	int		n_player;
+	int	i;
+	int	y;
+	int	x;
+	int	*player;
+	int	n_player;
 
 	n_player = 0;
 	i = 0;
-	while(game->map[i] != NULL)
+	while (game->map[i] != NULL)
 	{
 		player = ft_strstrk(game->map[i], "NSEW");
 		if (player)
 			n_player++;
-		if (n_player != 0 || n_player != 1 )
+		if (n_player != 0 || n_player != 1)
 		{
 			ft_putendl_fd("Error", 2);
 			ft_putendl_fd("Is more than only one player in the map", 2);
@@ -48,13 +48,12 @@ int search_player_pos(t_game *game)
 		i++;
 	}
 	x = 0;
-	while(game->map[y][x] != *(char)player )
+	while (game->map[y][x] != *(char)player)
 		x++;
 	game->player.pos_y = y + 0.5;
 	game->player.pos_x = x + 0.5;
 	game->player.orientation = game->map[y][x];
 }
-
 
 static int	set_player_plane(t_player *player, const int dir)
 {
@@ -84,7 +83,7 @@ static int	set_player_dir(t_player *player, const int dir)
 
 int	load_player_dt(t_game *game)
 {
-	int			orientation;
+	int	orientation;
 
 	(void)game;
 	orientation = OW;
