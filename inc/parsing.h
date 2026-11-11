@@ -23,6 +23,7 @@ typedef enum e_header
 	HEADER_INVALID
 }	t_header;
 
+int	validate_texture_path(t_game *game, char *line, int id);
 int	validate_headers(t_game *game);
 int	file_check(t_game *game);
 int	validate(t_game *game);
