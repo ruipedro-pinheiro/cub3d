@@ -23,9 +23,9 @@ int	validate_texture_path(t_game *game, char *line, int id)
 	int		i;
 	t_img	*img;
 
-	i = 1;
-	while (line[++i] == ' ' || line[++i] == '\t')
-		;
+	i = 2;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
 	if (id == HEADER_NO)
 		img = &game->w_north;
 	else if (id == HEADER_SO)
@@ -36,7 +36,7 @@ int	validate_texture_path(t_game *game, char *line, int id)
 		img = &game->w_est;
 	else
 		return (1);
-	img->path = ft_strtrim(line, "\n");
+	img->path = ft_strtrim(line + i, "\n");
 	if (!img->path || !img->path[0])
 		return (ft_putendl_fd(FG_BOLD_RED "Error\n couldn't setup wall textures"
 				FG_DEFAULT, 2), 1);
