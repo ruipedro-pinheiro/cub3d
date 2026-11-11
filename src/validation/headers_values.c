@@ -17,22 +17,20 @@ int	check_value(char *line, int *i, int *result, int j)
 	int	value;
 
 	value = 0;
+	if (!ft_isdigit(line[*i]))
+		return (ft_putendl_fd("Error\ninvalid RGB format", 2), 1);
 	while (ft_isdigit(line[*i]))
 	{
 		value = value * 10 + (line[(*i)++] - '0');
 		if (value > 255)
 			return (ft_putendl_fd("Error\nRGB value over 255", 2), 1);
 	}
-	if (line[*i] == ',')
-	{
-		result[j] = value;
-		(*i)++;
-	}
-	else if (j == 2 && (result[0] >= 0 && result[1] >= 0 && result[2] >= 0))
+	result[j] = value;
+	if (j == 2 && line[*i] == '\0')
 		return (0);
-	else
-		return (ft_putendl_fd("Error\ninvalid RGB format", 2), 1);
-	return (0);
+	if (j < 2 && line[*i] == ',')
+		return ((*i)++, 0);
+	return (ft_putendl_fd("Error\ninvalid RGB format", 2), 1);
 }
 
 int	validate_rgb(t_game *game, char *line, int id)
