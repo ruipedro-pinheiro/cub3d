@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 11:15:41 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/10 20:29:37 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/11 23:19:36 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ int	load_player_dt(t_game *game)
 {
 	int			orientation;
 
-	(void)game;
-	orientation = OW;
+	orientation = game->player.orientation;
 	set_player_dir(&game->player, orientation);
 	set_player_plane(&game->player, orientation);
 	search_player_pos(game);

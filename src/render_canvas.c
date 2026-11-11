@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/11 22:43:37 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/11 23:48:57 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ static void	render_texture(t_game *game, t_img *img, int posx, int posy)
 
 void	create_canvas(t_game *game)
 {
+	ft_bzero(game->screen.addr, HEIGHT * game->screen.size_line);
+
 	render_texture(game, &game->w_north, 50, 200);
 	render_texture(game, &game->w_south, 150, 200);
 	render_texture(game, &game->w_est, 250, 200);
