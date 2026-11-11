@@ -106,8 +106,8 @@ void	create_canvas(t_game *game)
 	render_texture(game, &game->w_est, 250, 200);
 	render_texture(game, &game->w_west, 350, 200);
 	generate_minimap(game, 6, 6);
-	//	draw_square(game, WIDTH / 2, 30, 60);
-	//	draw_square(game, WIDTH / 5, 60, 20);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->screen.img_ptr,
 		0, 0);
 }
+//	draw_square(game, WIDTH / 2, 30, 60);
+//	draw_square(game, WIDTH / 5, 60, 20);
