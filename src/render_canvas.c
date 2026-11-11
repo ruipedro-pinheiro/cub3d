@@ -43,7 +43,7 @@ int	load_textures(t_game *game)
 		return (1);
 	if (init_img(&game->w_est, game->mlx_ptr, game->w_est.path))
 		return (1);
-	if (init_img(&game->w_west, game->mlx_ptr, game->w_est.path))
+	if (init_img(&game->w_west, game->mlx_ptr, game->w_west.path))
 		return (1);
 	return (0);
 }
