@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 11:00:40 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/09 12:19:47 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/11 22:20:54 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,8 @@ enum	e_orient
 	OW
 };
 
-int	load_player_dt(t_game *game);
+int		load_player_dt(t_game *game);
+int		handle_keypressed(int keycodde, void *param);
+int		handle_keyrelease(int keycodde, void *param);
+void	update_movement(t_game *game);
 #endif // PLAYER_H

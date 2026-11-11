@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2026/11/10 11:07:39 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/11 22:07:21 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ typedef struct s_player
 	char	orientation;
 	int		rot_speed;
 	int		move_speed;
+	bool	key_w;
+	bool	key_s;
+	bool	key_a;
+	bool	key_d;
+	bool	key_rigth;
+	bool	key_left;
 }			t_player;
 
 typedef struct s_img

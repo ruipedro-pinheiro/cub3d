@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 18:22:06 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/09 11:53:33 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/11 22:21:38 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
