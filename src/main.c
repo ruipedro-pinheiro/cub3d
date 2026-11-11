@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 16:12:17 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/07 20:48:58 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/09 12:33:16 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int	main(int ac, char **av)
 	error = file_check(&game);
 	if (error)
 		return (ft_strfree(game.map), error);
+	load_player_dt(&game);
+	printf("PLAYER DATA:\n");
+	printf("pos_x: N/A\npos_y: N/A\ndir_x: %f\ndir_y: %f\nplane_x: %f\nplane_y: %f\n",game.player.dir_x, game.player.dir_y, game.player.plane_x, game.player.plane_y);
 	run_win_mlx(&game);
 	return (safe_exit(&game, 0));
 }

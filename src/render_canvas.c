@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 10:02:18 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 20:50:17 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/08 01:15:24 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,9 @@ void	create_canvas(t_game *game)
 	render_texture(game, &game->w_south, 150, 200);
 	render_texture(game, &game->w_est, 250, 200);
 	render_texture(game, &game->w_west, 350, 200);
-	draw_square(game, WIDTH / 2, 30, 60);
-	draw_square(game, WIDTH / 5, 60, 20);
+	generate_minimap(game, 6, 6);
+//	draw_square(game, WIDTH / 2, 30, 60);
+//	draw_square(game, WIDTH / 5, 60, 20);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->screen.img_ptr,
 		0, 0);
 }
