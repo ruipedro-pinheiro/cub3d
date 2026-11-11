@@ -104,7 +104,7 @@ int	validate_headers(t_game *game)
 			game->cursor++;
 			continue ;
 		}
-		if (line[j] == '1')
+		if (line[0] == '1')
 			break ;
 		if (register_header(line, seen, game))
 			return (1);
