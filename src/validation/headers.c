@@ -92,9 +92,9 @@ int	validate_headers(t_game *game)
 
 	game->cursor = 0;
 	ft_bzero(seen, sizeof(seen));
-	while (game->map[game->cursor])
+	while (game->config[game->cursor])
 	{
-		line = game->map[game->cursor];
+		line = game->config[game->cursor];
 		j = 0;
 		while (line[j] == ' ' || line[j] == '\t')
 			j++;
