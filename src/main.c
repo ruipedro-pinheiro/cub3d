@@ -36,9 +36,9 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	game.path_to_map = av[1];
-	error = validate_map(&game);
+	error = file_check(&game);
 	if (error)
-		return (ft_strfree(game.map), error);
+		return (safe_exit(&game, error));
 	load_player_dt(&game);
 	print_data(&game);
 	run_win_mlx(&game);

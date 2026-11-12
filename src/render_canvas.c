@@ -37,13 +37,13 @@ static int	init_img(t_img *img, void *mlx_ptr, char *path)
 
 int	load_textures(t_game *game)
 {
-	if (init_img(&game->w_north, game->mlx_ptr, TEXTURE_NORTH))
+	if (init_img(&game->w_north, game->mlx_ptr, game->w_north.path))
 		return (1);
-	if (init_img(&game->w_south, game->mlx_ptr, TEXTURE_SOUTH))
+	if (init_img(&game->w_south, game->mlx_ptr, game->w_south.path))
 		return (1);
-	if (init_img(&game->w_est, game->mlx_ptr, TEXTURE_EST))
+	if (init_img(&game->w_est, game->mlx_ptr, game->w_est.path))
 		return (1);
-	if (init_img(&game->w_west, game->mlx_ptr, TEXTURE_WEST))
+	if (init_img(&game->w_west, game->mlx_ptr, game->w_west.path))
 		return (1);
 	return (0);
 }
@@ -108,3 +108,6 @@ void	create_canvas(t_game *game)
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->screen.img_ptr,
 		0, 0);
 }
+// generate_minimap(game, 6, 6);
+//	draw_square(game, WIDTH / 2, 30, 60);
+//	draw_square(game, WIDTH / 5, 60, 20);

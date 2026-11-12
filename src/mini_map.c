@@ -11,6 +11,10 @@
 /* ************************************************************************** */
 
 #include "../inc/main.h"
+/*
+#define MINISCALE 20
+#define MINI_OFFSET_X 500
+#define MINI_OFFSET_Y 200
 
 unsigned int	select_color(char c, char orientation)
 {
@@ -57,14 +61,18 @@ float	*posicion_minimapa(t_game *game, float mini_pos[2])
 /*
 void	generate_minimap(t_game *game, int map_width, int map_height)
 {
-	char map[6][6] =
-	{
-		{'1','1','1','1','1','1'},
-		{'1','0','0','0','0','1'},
-		{'1','0','0','1','0','1'},
-		{'1','1','1','1','0','1'},
-		{'1','0','0','0','0','1'},
-		{'1','1','1','1','1','1'},
+	int				mx;
+	int				my;
+	int				pos_x;
+	int				pos_y;
+	unsigned int	color;
+	char			map[6][6] = {
+	{'1', '1', '1', '1', '1', '1'},
+	{'1', '0', '0', '0', '0', '1'},
+	{'1', '0', '0', '1', '0', '1'},
+	{'1', '1', '1', '1', '0', '1'},
+	{'1', '0', '0', '0', '0', '1'},
+	{'1', '1', '1', '1', '1', '1'},
 	};
 	int mx;
 	int my;
@@ -75,7 +83,7 @@ void	generate_minimap(t_game *game, int map_width, int map_height)
 	(void)map;
 
 	my = 0;
-	while(my <= map_height - 1)
+	while (my <= map_height - 1)
 	{
 		mx = 0;
 		while (mx <= map_width - 1)
@@ -84,7 +92,7 @@ void	generate_minimap(t_game *game, int map_width, int map_height)
 
 			pos_x = MINI_OFFSET_X + (mx * MINISCALE);
 			pos_y = MINI_OFFSET_Y + (my * MINISCALE);
-			draw_square_tile(game, pos_x, pos_y, MINISCALE, color );
+			draw_square_tile(game, pos_x, pos_y, MINISCALE, color);
 			mx++;
 		}
 		my++;
