@@ -56,7 +56,6 @@ int	validate_rgb(t_game *game, char *line, int id)
 		if (check_value(line, &i, result, count))
 			return (1);
 	}
-	printf("RGB: %d, %d, %d\n", result[0], result[1], result[2]);
 	return (0);
 }
 
