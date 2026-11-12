@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/main.h"
+#include "main.h"
 
 int	check_value(char *line, int *i, int *result, int j)
 {
