@@ -12,8 +12,8 @@ ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
 SRC = main.c \
 	  parse_prep.c \
 	  parsing/validation.c \
-	  parsing/headers.c \
-	  parsing/headers_values.c \
+	  parsing/config/headers.c \
+	  parsing/config/headers_values.c \
 	  win.c \
 	  render_canvas.c \
 	  utils.c \
@@ -54,9 +54,6 @@ all: $(NAME)
 $(NAME): $(OBJ) $(LIBFT) $(MINILIB)
 	@$(CC) $(CFLAGS) -L$(LIBFT_DIR)  $(OBJ) $(LIBFT) -L$(MINILIB_DIR) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
 
-$(OBJDIR):
-	@mkdir -p $(OBJDIR) $(OBJDIR)/parsing
-
 $(MINILIB):
 	@printf "$(Y) 📚 [MiniLibX] building... $(RESET)"
 	@$(MAKE) -C $(MINILIB_DIR) --silent 2>/dev/null
@@ -64,7 +61,8 @@ $(MINILIB):
 $(LIBFT):
 	@$(MAKE) --silent -C $(LIBFT_DIR)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@$(call progress,$(words $(SRC)))
 
