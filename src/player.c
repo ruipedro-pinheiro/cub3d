@@ -23,32 +23,32 @@ int	ft_strstrk(char *s1, char *s2)
 	return (0);
 }
 
-int	search_player_pos(t_game *game)
-{
-	int	i;
-	int	y;
-	int	x;
-	int	player;
-
-	i = 0;
-	while (game->map[i] != NULL)
-	{
-		player = ft_strstrk(game->map[i], "NSEW");
-		if (player)
-		{
-			y = i;
-			break ;
-		}
-		i++;
-	}
-	x = 0;
-	while (game->map[y][x] != player)
-		x++;
-	game->player.pos_y = y + 0.5;
-	game->player.pos_x = x + 0.5;
-	game->player.orientation = player;
-	return (0);
-}
+// int	search_player_pos(t_game *game)
+// {
+// 	int	i;
+// 	int	y;
+// 	int	x;
+// 	int	player;
+//
+// 	i = 0;
+// 	while (game->map[i] != NULL)
+// 	{
+// 		player = ft_strstrk(game->map[i], "NSEW");
+// 		if (player)
+// 		{
+// 			y = i;
+// 			break ;
+// 		}
+// 		i++;
+// 	}
+// 	x = 0;
+// 	while (game->map[y][x] != player)
+// 		x++;
+// 	game->player.pos_y = y + 0.5;
+// 	game->player.pos_x = x + 0.5;
+// 	game->player.orientation = player;
+// 	return (0);
+// }
 
 static int	set_player_plane(t_player *player, const int dir)
 {
@@ -84,6 +84,6 @@ int	load_player_dt(t_game *game)
 	orientation = OW;
 	set_player_dir(&game->player, orientation);
 	set_player_plane(&game->player, orientation);
-	search_player_pos(game);
+	//search_player_pos(game);
 	return (1);
 }
