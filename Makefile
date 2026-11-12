@@ -11,9 +11,9 @@ CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -g3 -O0 -Wshadow -Wstr
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
 SRC = main.c \
 	  parse_prep.c \
-	  validation/validation.c \
-	  validation/headers.c \
-	  validation/headers_values.c \
+	  parsing/validation.c \
+	  parsing/headers.c \
+	  parsing/headers_values.c \
 	  win.c \
 	  render_canvas.c \
 	  utils.c \
@@ -55,7 +55,7 @@ $(NAME): $(OBJ) $(LIBFT) $(MINILIB)
 	@$(CC) $(CFLAGS) -L$(LIBFT_DIR)  $(OBJ) $(LIBFT) -L$(MINILIB_DIR) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
 
 $(OBJDIR):
-	@mkdir -p $(OBJDIR) $(OBJDIR)/validation
+	@mkdir -p $(OBJDIR) $(OBJDIR)/parsing
 
 $(MINILIB):
 	@printf "$(Y) 📚 [MiniLibX] building... $(RESET)"
