@@ -55,29 +55,31 @@ static char	**expand_map(char **map, int count_len, int i, char *line)
 	return (new);
 }
 
-int	dup_map(t_game *game, int fd)
+int	dup_buffer(t_game *game, int fd)
 {
 	char	*line;
-	char	**map;
-	char	**tmp;
+	char	***buffer;
 	int		count_len;
 
-	map = NULL;
+	buffer = &game->config;
 	count_len = -1;
 	while (++count_len >= 0)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		tmp = expand_map(map, count_len, -1, line);
-		if (!tmp)
-			return (ft_strfree(map), free(line), close(fd), -1);
-		map = tmp;
+		if (line[0] == '1' && buffer == &game->config)
+		{
+			buffer = &game->map;
+			count_len = 0;
+		}
+		*buffer = expand_map(*buffer, count_len, -1, line);
+		if (!*buffer)
+			return (ft_strfree(*buffer), free(line), close(fd), -1);
 	}
-	close(fd);
-	if (!map)
-		return (ft_putendl_fd("Error\nempty map file", 2), 1);
-	return (game->map = map, 0);
+	if (!*buffer)
+		return (ft_putendl_fd("Error\ncouldn't read file content", 2), 1);
+	return (0);
 }
 
 int	file_check(t_game *game)
@@ -94,7 +96,14 @@ int	file_check(t_game *game)
 		close(map_fd);
 		return (ft_putendl_fd("Error\ninvalid .cub extension", 2), 1);
 	}
-	error = dup_map(game, map_fd);
+	error = dup_buffer(game, map_fd);
+	close(map_fd);
+	ft_putendl_fd("=== CONFIG ===", 2);
+	for (int x = 0; game->config[x] != NULL; x++)
+		ft_putendl_fd(game->config[x], 2);
+	ft_putendl_fd("=== MAP ===", 2);
+	for (int x = 0; game->map[x] != NULL; x++)
+		ft_putendl_fd(game->map[x], 2);
 	if (error)
 		return (error);
 	if (validate(game))
