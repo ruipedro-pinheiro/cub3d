@@ -43,6 +43,7 @@ typedef struct s_game
 	int			map_fd;
 	void		*mlx_ptr;
 	void		*win_ptr;
+	char		**config;
 	char		**map;
 	char		*path_to_map;
 	int			cursorcreate_ca;
