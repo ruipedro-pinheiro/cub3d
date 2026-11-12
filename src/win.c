@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 20:48:16 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/07 20:50:58 by chguerre         ###   ########.fr       */
+/*   Updated: 2026/11/10 23:35:36 by chguerre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,15 @@ int	handle_keypressed(int keycode, void *param)
 	t_game	*game;
 
 	game = (t_game *)param;
+	ft_printf("%\n", keycode);
+	if (keycode == 13 || keycode == 119)
+		ft_printf("TECLA PRESIONADA W: %d\n", keycode);
+	if (keycode == 0 || keycode == 97)
+		ft_printf("TECLA PRESIONADA A: %d\n", keycode);
+	if (keycode == 1 || keycode == 115)
+		ft_printf("TECLA PRESIONADA S: %d\n", keycode);
+	if (keycode == 2 || keycode == 100)
+		ft_printf("TECLA PRESIONADA S: %d\n", keycode);
 	if (keycode == 53 || keycode == 65307)
 		exit(safe_exit(game, 0));
 	return (0);

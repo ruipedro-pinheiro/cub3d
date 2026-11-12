@@ -13,8 +13,11 @@
 #ifndef MLX_WIN_H
 # define MLX_WIN_H
 
-# define HEIGHT 600
-# define WIDTH 800
+# define MINISCALE 40
+# define MINI_OFFSET_X 100
+# define MINI_OFFSET_Y 400
+# define HEIGHT 1080
+# define WIDTH 720
 
 int		fill_path_img(t_img *img, char *path);
 int		run_win_mlx(t_game *game);
