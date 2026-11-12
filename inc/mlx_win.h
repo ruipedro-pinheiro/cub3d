@@ -19,8 +19,7 @@
 # define HEIGHT 1080
 # define WIDTH 720
 
-	int
-	fill_path_img(t_img *img, char *path);
+int		fill_path_img(t_img *img, char *path);
 int		run_win_mlx(t_game *game);
 int		handle_keypressed(int keycodde, void *param);
 void	create_canvas(t_game *game);

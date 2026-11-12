@@ -58,7 +58,7 @@ float	*posicion_minimapa(t_game *game, float mini_pos[2])
 			* (float)MINISCALE);
 	return (mini_pos);
 }
-/*
+
 void	generate_minimap(t_game *game, int map_width, int map_height)
 {
 	int				mx;

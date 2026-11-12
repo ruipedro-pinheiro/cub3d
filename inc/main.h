@@ -15,11 +15,10 @@
 # include "colors.h"
 # include "exit.h"
 # include "libft/libft.h"
-# include "struct.h"
 # include "minilibx/mlx.h"
-# include "mlx_win.h"
 # include "parsing.h"
 # include "player.h"
+# include "struct.h"
 # include "textures.h"
-
+# include "mlx_win.h"
 #endif
