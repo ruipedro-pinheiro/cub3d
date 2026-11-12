@@ -14,6 +14,7 @@ SRC = main.c \
 	  parsing/validation.c \
 	  parsing/config/headers.c \
 	  parsing/config/headers_values.c \
+      parsing/map/validation.c \
 	  win.c \
 	  render_canvas.c \
 	  utils.c \
@@ -47,7 +48,7 @@ endef
 #                                   RULES                                      #
 ################################################################################
 
-all: $(NAME)
+all: $(NAME) compile_flags.txt
 	@if [ $$(cat $(CNT)) -gt 0 ]; then printf "\n"; fi
 	@printf " $(C)✅ [$(NAME)] $(B)Build complete$(X)\n"
 
@@ -87,5 +88,8 @@ run: re
 
 norm:
 	@norminette src inc/*.h inc/libft | grep "Error" || echo "${G}No errors found :3${X}"
+
+compile_flags.txt: Makefile
+	@printf '%s\n' $(filter -I% -D% -std=%,$(CPPFLAGS) $(CFLAGS)) > $@
 
 .PHONY: all clean fclean re debug asan
