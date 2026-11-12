@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2026/11/11 22:07:21 by chguerre         ###   ########.fr       */
+/*   Created: 2026/11/12 17:23:35 by ch                #+#    #+#             */
+/*   Updated: 2026/11/12 17:23:35 by ch               ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 
 typedef struct s_player
 {
-	float	pos_x;
-	float	pos_y;
-	float	dir_x;
-	float	dir_y;
-	float	plane_x;
-	float	plane_y;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 	char	orientation;
-	int		rot_speed;
-	int		move_speed;
+	double	rot_speed;
+	double	move_speed;
 	bool	key_w;
 	bool	key_s;
 	bool	key_a;

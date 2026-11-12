@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/04 20:48:16 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/11 23:44:31 by chguerre         ###   ########.fr       */
+/*   Created: 2026/11/12 17:26:06 by ch                #+#    #+#             */
+/*   Updated: 2026/11/12 17:26:06 by ch               ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void init_graphics(t_game *game)
 int game_loop(t_game *game)
 {
 	update_movement(game);
+	handle_rotation(&game->player);
 	create_canvas(game);
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->screen.img_ptr,	0, 0);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/09 11:15:41 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/11 23:19:36 by chguerre         ###   ########.fr       */
+/*   Created: 2026/11/12 17:13:23 by ch                #+#    #+#             */
+/*   Updated: 2026/11/12 17:13:23 by ch               ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int search_player_pos(t_game *game)
 	int		player;
 
 	i = 0;
+	y = 0;
 	while(game->map[i] != NULL)
 	{
 		player = ft_strstrk(game->map[i], "NSEW");
@@ -85,5 +86,7 @@ int	load_player_dt(t_game *game)
 	set_player_dir(&game->player, orientation);
 	set_player_plane(&game->player, orientation);
 	search_player_pos(game);
+	game->player.move_speed = 0.05;
+	game->player.rot_speed = 0.3;
 	return (1);
 }

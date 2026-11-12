@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/03 18:22:06 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/11 22:21:38 by chguerre         ###   ########.fr       */
+/*   Created: 2026/11/12 16:28:15 by ch                #+#    #+#             */
+/*   Updated: 2026/11/12 16:28:29 by ch               ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "mlx_win.h"
 # include "parsing.h"
 # include "player.h"
+# include <math.h>
 
 # include "textures.h"
 #endif

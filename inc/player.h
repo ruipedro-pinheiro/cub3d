@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerre <chguerre@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/09 11:00:40 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/11 22:20:54 by chguerre         ###   ########.fr       */
+/*   Created: 2026/11/12 16:39:33 by ch                #+#    #+#             */
+/*   Updated: 2026/11/12 16:39:38 by ch               ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,5 @@ int		load_player_dt(t_game *game);
 int		handle_keypressed(int keycodde, void *param);
 int		handle_keyrelease(int keycodde, void *param);
 void	update_movement(t_game *game);
+void	handle_rotation(t_player *p);
 #endif // PLAYER_H

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_win.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chguerred <chguerre@student.42lausanne.ch>  +#+  +:+       +#+ */
+/*   By: ch <chguerre@42lausanne.ch>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/11/04 21:00:22 by chguerre          #+#    #+#             */
-/*   Updated: 2026/11/09 11:34:11 by chguerre         ###   ########.ch       */
+/*   Created: 2026/11/12 15:00:51 by ch                #+#    #+#             */
+/*   Updated: 2026/11/12 15:00:57 by ch               ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define TEXTURE_WEST "assets/textures/west.xpm"
 # define TEXTURE_EST "assets/textures/est.xpm"
 # define HEIGHT 1080
-# define WIDTH 720
+# define WIDTH 1920
 
 int		run_win_mlx(t_game *game);
 int		game_loop(t_game *game);

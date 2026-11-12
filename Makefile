@@ -20,7 +20,8 @@ SRC = main.c \
 	player.c \
 	move_player.c \
 	keys_actions.c \
-	init_graphics.c
+	init_graphics.c \
+	rotate_player.c
 
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
