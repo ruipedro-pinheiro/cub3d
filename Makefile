@@ -7,8 +7,7 @@ MINILIB = $(MINILIB_DIR)/libmlx.a
 LIBFT_DIR = $(INCDIR)/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -Wshadow -Wstrict-prototypes -Wpointer-arith
-VAL_FLAGS  = -g3 -O0
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -g3 -O0 -Wshadow -Wstrict-prototypes -Wpointer-arith
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
 SRC = main.c \
 	  parse_prep.c \
@@ -81,9 +80,6 @@ fclean: clean
 	@rm -f /tmp/debug.log minishell .minishell_history .mini_cnt
 
 re: fclean all
-
-debug: CFLAGS += $(VAL_FLAGS)
-debug: re
 
 asan:  CFLAGS += $(VAL_FLAGS) $(ASAN_FLAGS)
 asan:  re
