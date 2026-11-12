@@ -98,17 +98,17 @@ int	validate_headers(t_game *game)
 		j = 0;
 		while (line[j] == ' ' || line[j] == '\t')
 			j++;
+		if (line[0] == '1')
+			break ;
 		line += j;
 		if (line[0] == '\n' || line[0] == '\0')
 		{
 			game->cursor++;
 			continue ;
 		}
-		if (line[0] == '1')
-			break ;
 		if (register_header(line, seen, game))
 			return (1);
 		game->cursor++;
 	}
-	return (verify_registerd_headers(seen));
+	return (game->cursor = 0, verify_registerd_headers(seen));
 }
