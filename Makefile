@@ -10,6 +10,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -g3 -O0 -Wshadow -Wstrict-prototypes -Wpointer-arith
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
 SRC = main.c \
+	  debug/main.c \
 	  parsing/parse_prep.c \
 	  parsing/validation.c \
 	  parsing/config/headers.c \
@@ -20,7 +21,7 @@ SRC = main.c \
 	  utils.c \
 	  draw.c \
       mini_map.c \
-      player.c
+      player.c 
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 ################################################################################
