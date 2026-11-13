@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 16:11:16 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/12 16:15:24 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/13 17:47:50 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	check_pos(t_game *game, char c, int x, int y)
 			ft_putendl_fd("Error\nFound multiple player positions", 2);
 			return (1);
 		}
-		game->player.pos_x = x;
-		game->player.pos_y = y;
+		game->player.pos_x = x + 0.5;
+		game->player.pos_y = y + 0.5;
 		game->player.orientation = c;
 	}
 	return (0);
