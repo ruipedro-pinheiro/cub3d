@@ -21,6 +21,11 @@ int	safe_exit(t_game *game, int code)
 		ft_strfree(game->map);
 		game->map = NULL;
 	}
+	if (game->config != NULL)
+	{
+		ft_strfree(game->config);
+		game->config = NULL;
+	}
 	if (game->mlx_ptr && game->win_ptr)
 	{
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
