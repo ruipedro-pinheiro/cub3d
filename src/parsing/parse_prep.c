@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:21:24 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/05 18:02:58 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/13 17:03:59 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,25 @@ static char	**expand_map(char **map, int count_len, int i, char *line)
 	return (new);
 }
 
+char	*skip_empty(char *line, int fd)
+{
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			return (NULL);
+		if (line[0] == '\n' || line[0] == '\0')
+		{
+			free(line);
+			line = get_next_line(fd);
+			continue ;
+		}
+		if (line[0] != '\n')
+			return (line);
+	}
+	return (line);
+}
+
 int	dup_buffer(t_game *game, int fd)
 {
 	char	*line;
@@ -47,9 +66,10 @@ int	dup_buffer(t_game *game, int fd)
 
 	buffer = &game->config;
 	count_len = -1;
+	line = NULL;
 	while (++count_len >= 0)
 	{
-		line = get_next_line(fd);
+		line = skip_empty(line, fd);
 		if (!line)
 			break ;
 		if (line[0] == '1' && buffer == &game->config)
@@ -86,18 +106,5 @@ int	file_check(t_game *game)
 		return (error);
 	if (validate(game))
 		return (1);
-	ft_putendl_fd("=== CONFIG ===", 2);
-	for (int x = 0; game->config[x] != NULL; x++)
-	{
-		ft_putstr_fd("|> ", 2);
-		ft_putendl_fd(game->config[x], 2);
-	}
-	ft_putendl_fd("\n=== MAP ===", 2);
-	for (int x = 0; game->map[x] != NULL; x++)
-	{
-		ft_putnbr_fd(x, 2);
-		ft_putstr_fd("|> ", 2);
-		ft_putendl_fd(game->map[x], 2);
-	}
 	return (0);
 }
