@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 16:11:16 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/13 17:47:50 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/13 19:39:58 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,37 @@ int	check_valid_char(char **map, t_game *game)
 	return (0);
 }
 
+int	check_map(char **map)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (map[++y])
+	{
+		x = -1;
+		while (map[y][++x])
+		{
+			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
+				|| map[y][x] == 'W' || map[y][x] == 'E')
+			{
+				if ((map[y][x + 1] == '\0' || map[y][x + 1] == ' ') || (map[y
+						+ 1][x] == '\0' || map[y + 1][x] == ' ') || (map[y][x
+						- 1] == '\0' || map[y][x - 1] == ' ') || (map[y
+						- 1][x] == '\0' || map[y - 1][x] == ' '))
+					return (ft_putendl_fd("Error\nMap not closed by walls", 2),
+						1);
+			}
+		}
+	}
+	return (0);
+}
+
 int	validate_map(t_game *game)
 {
 	if (check_valid_char(game->map, game))
+		return (1);
+	if (check_map(game->map))
 		return (1);
 	return (0);
 }

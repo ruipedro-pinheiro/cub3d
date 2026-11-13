@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:21:24 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/13 17:03:59 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/13 19:41:35 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static char	**expand_map(char **map, int count_len, int i, char *line)
 	new[count_len + 1] = NULL;
 	return (new);
 }
+// TODO: FIX LEAKING
 
 char	*skip_empty(char *line, int fd)
 {
