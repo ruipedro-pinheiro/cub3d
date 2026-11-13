@@ -103,10 +103,7 @@ int	validate_headers(t_game *game)
 			break ;
 		line += j;
 		if (line[0] == '\n' || line[0] == '\0')
-		{
-			i++;
 			continue ;
-		}
 		if (register_header(line, seen, game))
 			return (1);
 	}
