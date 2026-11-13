@@ -12,22 +12,6 @@
 
 #include "../inc/main.h"
 
-/* I've decided to return specific errors specifying why the map is not valid.
- There's still not real map validation from the rules but only basic checks
- 0 = good/no errors
--1 = doesn't exist or fd error
- 1 = not valid (any rules that are invalid following subject) TODO:
-*/
-
-static void	output_validation(int error, char *path_to_map)
-{
-	if (error == -1)
-	{
-		ft_putstr_fd("Error\ncannot open map: ", 2);
-		ft_putendl_fd(path_to_map, 2);
-	}
-}
-
 static bool	check_extension(char *str, int len)
 {
 	if (len < 4)
@@ -68,8 +52,6 @@ int	dup_buffer(t_game *game, int fd)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		if (line[0] == '\n')
-			continue ;
 		if (line[0] == '1' && buffer == &game->config)
 		{
 			buffer = &game->map;
@@ -79,8 +61,8 @@ int	dup_buffer(t_game *game, int fd)
 		if (!*buffer)
 			return (ft_strfree(*buffer), free(line), close(fd), -1);
 	}
-	if (!*buffer)
-		return (ft_putendl_fd("Error\ncouldn't read file content", 2), 1);
+	if (!game->config || !game->map)
+		return (ft_putendl_fd("Error\nempty map or header", 2), 1);
 	return (0);
 }
 
@@ -92,7 +74,7 @@ int	file_check(t_game *game)
 	error = 0;
 	map_fd = open(game->path_to_map, O_RDONLY);
 	if (map_fd == -1)
-		return (output_validation(error = -1, game->path_to_map), error);
+		return (ft_putendl_fd("Error\ncannot open map: ", 2), 1);
 	if (!check_extension(game->path_to_map, ft_strlen(game->path_to_map)))
 	{
 		close(map_fd);
