@@ -47,8 +47,6 @@ typedef struct s_game
 	char		**map;
 	char		*path_to_map;
 	int			cursorcreate_ca;
-	int			count_lines;
-	int			max_length;
 	int			cursor;
 	int			c_color[3];
 	int			f_color[3];

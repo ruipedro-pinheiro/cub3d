@@ -55,9 +55,6 @@ int	check_valid_char(char **map, t_game *game)
 
 int	validate_map(t_game *game)
 {
-	int	i;
-
-	i = game->cursor;
 	if (check_valid_char(game->map, game))
 		return (1);
 	return (0);

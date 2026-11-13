@@ -89,12 +89,13 @@ int	validate_headers(t_game *game)
 	char	*line;
 	int		j;
 	bool	seen[6];
+	int		i;
 
-	game->cursor = 0;
+	i = -1;
 	ft_bzero(seen, sizeof(seen));
-	while (game->config[game->cursor])
+	while (game->config[++i])
 	{
-		line = game->config[game->cursor];
+		line = game->config[i];
 		j = 0;
 		while (line[j] == ' ' || line[j] == '\t')
 			j++;
@@ -103,12 +104,11 @@ int	validate_headers(t_game *game)
 		line += j;
 		if (line[0] == '\n' || line[0] == '\0')
 		{
-			game->cursor++;
+			i++;
 			continue ;
 		}
 		if (register_header(line, seen, game))
 			return (1);
-		game->cursor++;
 	}
-	return (game->cursor = 0, verify_registerd_headers(seen));
+	return (i = 0, verify_registerd_headers(seen));
 }
