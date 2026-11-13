@@ -68,6 +68,8 @@ int	dup_buffer(t_game *game, int fd)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
+		if (line[0] == '\n')
+			continue ;
 		if (line[0] == '1' && buffer == &game->config)
 		{
 			buffer = &game->map;
@@ -98,15 +100,22 @@ int	file_check(t_game *game)
 	}
 	error = dup_buffer(game, map_fd);
 	close(map_fd);
-	ft_putendl_fd("=== CONFIG ===", 2);
-	for (int x = 0; game->config[x] != NULL; x++)
-		ft_putendl_fd(game->config[x], 2);
-	ft_putendl_fd("=== MAP ===", 2);
-	for (int x = 0; game->map[x] != NULL; x++)
-		ft_putendl_fd(game->map[x], 2);
 	if (error)
 		return (error);
 	if (validate(game))
 		return (1);
+	ft_putendl_fd("=== CONFIG ===", 2);
+	for (int x = 0; game->config[x] != NULL; x++)
+	{
+		ft_putstr_fd("|> ", 2);
+		ft_putendl_fd(game->config[x], 2);
+	}
+	ft_putendl_fd("\n=== MAP ===", 2);
+	for (int x = 0; game->map[x] != NULL; x++)
+	{
+		ft_putnbr_fd(x, 2);
+		ft_putstr_fd("|> ", 2);
+		ft_putendl_fd(game->map[x], 2);
+	}
 	return (0);
 }
