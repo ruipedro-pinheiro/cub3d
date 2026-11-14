@@ -21,7 +21,7 @@ static int	init_img(t_img *img, void *mlx_ptr, char *path)
 	if (img->img_ptr == NULL)
 	{
 		ft_putstr_fd("Error\nFailed loading texture in path -> ", 2);
-		ft_putendl_fd(path, 2);
+		ft_putendl_fd(img->path, 2);
 		return (1);
 	}
 	img->addr = mlx_get_data_addr(img->img_ptr, &img->bpp, &img->size_line,
