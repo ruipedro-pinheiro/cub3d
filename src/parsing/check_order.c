@@ -12,6 +12,23 @@
 
 #include "main.h"
 
+bool	check_map_last(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] == '\n' || line[i] == ' ')
+	{
+		i++;
+	}
+	if ((is_identifier(line)) < 6)
+	{
+		ft_putendl_fd("Error\nFound map before header", 2);
+		return (1);
+	}
+	return (0);
+}
+
 int	skip_empty(char **line, int fd, char ***buffer, t_game *game)
 {
 	while (1)
@@ -19,6 +36,8 @@ int	skip_empty(char **line, int fd, char ***buffer, t_game *game)
 		*line = get_next_line(fd);
 		if (!*line)
 			return (0);
+		if (check_map_last(*line))
+			return (-1);
 		if ((*line)[0] != '\n')
 			return (1);
 		if (buffer == &game->map)

@@ -12,7 +12,7 @@
 
 #include "main.h"
 
-static int	is_identifier(char *line)
+int	is_identifier(char *line)
 {
 	if (line[0] == 'C' && (line[1] == ' ' || line[1] == '\t'))
 		return (HEADER_C);

@@ -31,3 +31,4 @@ int		validate_map(t_game *game);
 int		validate(t_game *game);
 int		file_check(t_game *game);
 char	**expand_map(char **map, int count_len, int i, char *line);
+int		is_identifier(char *line);
