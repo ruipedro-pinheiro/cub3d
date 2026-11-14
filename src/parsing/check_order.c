@@ -6,25 +6,25 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 15:53:07 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/14 15:57:02 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/14 16:30:03 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-static char	*skip_empty(char *line, int fd, char ***buffer, t_game *game)
+int	skip_empty(char **line, int fd, char ***buffer, t_game *game)
 {
 	while (1)
 	{
-		line = get_next_line(fd);
+		*line = get_next_line(fd);
+		if (!*line)
+			return (0);
+		if ((*line)[0] != '\n')
+			return (1);
 		if (buffer == &game->map)
-		{
-			if (line[0] == '\n')
-				return (ft_putendl_fd("Error\nFound newline on map", 2), NULL);
-		}
-		if (!line || line[0] != '\n')
-			return (line);
-		free(line);
+			return (free(*line), ft_putendl_fd("Error\nFound newline on map",
+					2), -1);
+		free(*line);
 	}
 }
 
@@ -38,7 +38,8 @@ int	dup_buffer(t_game *game, int fd)
 	count_len = -1;
 	while (++count_len >= 0)
 	{
-		line = skip_empty(line, fd, buffer, game);
+		if (skip_empty(&line, fd, buffer, game) == -1)
+			return (1);
 		if (!line)
 			break ;
 		if (line[0] == '1' && buffer == &game->config)
