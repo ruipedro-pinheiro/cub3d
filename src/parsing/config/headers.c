@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/main.h"
+#include "main.h"
 
 static int	is_identifier(char *line)
 {
@@ -89,26 +89,23 @@ int	validate_headers(t_game *game)
 	char	*line;
 	int		j;
 	bool	seen[6];
+	int		i;
 
-	game->cursor = 0;
+	i = -1;
 	ft_bzero(seen, sizeof(seen));
-	while (game->map[game->cursor])
+	while (game->config[++i])
 	{
-		line = game->map[game->cursor];
+		line = game->config[i];
 		j = 0;
 		while (line[j] == ' ' || line[j] == '\t')
 			j++;
-		line += j;
-		if (line[0] == '\n' || line[0] == '\0')
-		{
-			game->cursor++;
-			continue ;
-		}
 		if (line[0] == '1')
 			break ;
+		line += j;
+		if (line[0] == '\n' || line[0] == '\0')
+			continue ;
 		if (register_header(line, seen, game))
 			return (1);
-		game->cursor++;
 	}
-	return (verify_registerd_headers(seen));
+	return (i = 0, verify_registerd_headers(seen));
 }

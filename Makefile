@@ -7,20 +7,21 @@ MINILIB = $(MINILIB_DIR)/libmlx.a
 LIBFT_DIR = $(INCDIR)/libft
 LIBFT = $(LIBFT_DIR)/libft.a
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -Wshadow -Wstrict-prototypes -Wpointer-arith
-VAL_FLAGS  = -g3 -O0
+CFLAGS = -Wall -Wextra -Werror -I$(INCDIR) -I$(LIBFT_DIR) -g3 -O0 -Wshadow -Wstrict-prototypes -Wpointer-arith
 ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
 SRC = main.c \
-	  parse_prep.c \
-	  validation/validation.c \
-	  validation/headers.c \
-	  validation/headers_values.c \
+	  debug/main.c \
+	  parsing/parse_prep.c \
+	  parsing/validation.c \
+	  parsing/config/headers.c \
+	  parsing/config/headers_values.c \
+      parsing/map/validation.c \
 	  win.c \
 	  render_canvas.c \
 	  utils.c \
 	  draw.c \
       mini_map.c \
-      player.c
+      player.c 
 OBJ = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
 ################################################################################
@@ -48,15 +49,12 @@ endef
 #                                   RULES                                      #
 ################################################################################
 
-all: $(NAME)
+all: $(NAME) compile_flags.txt
 	@if [ $$(cat $(CNT)) -gt 0 ]; then printf "\n"; fi
 	@printf " $(C)✅ [$(NAME)] $(B)Build complete$(X)\n"
 
 $(NAME): $(OBJ) $(LIBFT) $(MINILIB)
 	@$(CC) $(CFLAGS) -L$(LIBFT_DIR)  $(OBJ) $(LIBFT) -L$(MINILIB_DIR) $(MINILIB) -lmlx -lXext -lX11 -lm -o $(NAME)
-
-$(OBJDIR):
-	@mkdir -p $(OBJDIR) $(OBJDIR)/validation
 
 $(MINILIB):
 	@printf "$(Y) 📚 [MiniLibX] building... $(RESET)"
@@ -65,7 +63,8 @@ $(MINILIB):
 $(LIBFT):
 	@$(MAKE) --silent -C $(LIBFT_DIR)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c
+	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@$(call progress,$(words $(SRC)))
 
@@ -82,9 +81,6 @@ fclean: clean
 
 re: fclean all
 
-debug: CFLAGS += $(VAL_FLAGS)
-debug: re
-
 asan:  CFLAGS += $(VAL_FLAGS) $(ASAN_FLAGS)
 asan:  re
 
@@ -93,5 +89,8 @@ run: re
 
 norm:
 	@norminette src inc/*.h inc/libft | grep "Error" || echo "${G}No errors found :3${X}"
+
+compile_flags.txt: Makefile
+	@printf '%s\n' $(filter -I% -D% -std=%,$(CPPFLAGS) $(CFLAGS)) > $@
 
 .PHONY: all clean fclean re debug asan

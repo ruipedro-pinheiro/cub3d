@@ -6,7 +6,7 @@
 /*   By: chguerre <chguerre@student.lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 18:03:08 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/05 17:34:16 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/13 16:16:30 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,10 @@ typedef struct s_game
 	int			map_fd;
 	void		*mlx_ptr;
 	void		*win_ptr;
+	char		**config;
 	char		**map;
 	char		*path_to_map;
 	int			cursorcreate_ca;
-	int			count_lines;
-	int			max_length;
-	int			cursor;
 	int			c_color[3];
 	int			f_color[3];
 	t_player	player;
