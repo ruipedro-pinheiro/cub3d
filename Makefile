@@ -12,6 +12,7 @@ ASAN_FLAGS = -fsanitize=address,undefined -fno-omit-frame-pointer
 SRC = main.c \
 	  debug/main.c \
 	  parsing/parse_prep.c \
+	  parsing/check_order.c \
 	  parsing/validation.c \
 	  parsing/config/headers.c \
 	  parsing/config/headers_values.c \

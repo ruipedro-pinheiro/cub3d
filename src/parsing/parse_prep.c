@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:21:24 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/13 19:41:35 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/14 15:56:41 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static bool	check_extension(char *str, int len)
 	return (false);
 }
 
-static char	**expand_map(char **map, int count_len, int i, char *line)
+char	**expand_map(char **map, int count_len, int i, char *line)
 {
 	char	**new;
 
@@ -37,45 +37,6 @@ static char	**expand_map(char **map, int count_len, int i, char *line)
 	new[count_len] = line;
 	new[count_len + 1] = NULL;
 	return (new);
-}
-
-char	*skip_empty(char *line, int fd)
-{
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (!line || line[0] != '\n')
-			return (line);
-		free(line);
-	}
-}
-
-int	dup_buffer(t_game *game, int fd)
-{
-	char	*line;
-	char	***buffer;
-	int		count_len;
-
-	buffer = &game->config;
-	count_len = -1;
-	line = NULL;
-	while (++count_len >= 0)
-	{
-		line = skip_empty(line, fd);
-		if (!line)
-			break ;
-		if (line[0] == '1' && buffer == &game->config)
-		{
-			buffer = &game->map;
-			count_len = 0;
-		}
-		*buffer = expand_map(*buffer, count_len, -1, line);
-		if (!*buffer)
-			return (ft_strfree(*buffer), free(line), close(fd), -1);
-	}
-	if (!game->config || !game->map)
-		return (ft_putendl_fd("Error\nempty map or header", 2), 1);
-	return (0);
 }
 
 int	file_check(t_game *game)
