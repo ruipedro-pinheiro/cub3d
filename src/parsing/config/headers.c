@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/10 17:46:48 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/11 11:09:27 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/14 16:54:20 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ static char	*get_header_name(int i)
 static int	verify_registerd_headers(bool *seen)
 {
 	int	i;
+	int	missing;
 
+	missing = 0;
 	i = 0;
 	while (i < 6)
 	{
@@ -77,10 +79,12 @@ static int	verify_registerd_headers(bool *seen)
 			ft_putstr_fd(FG_BOLD_RED "Error\nmissing header ", 2);
 			ft_putstr_fd(get_header_name(i), 2);
 			ft_putendl_fd(FG_DEFAULT, 2);
-			return (1);
+			missing++;
 		}
 		i++;
 	}
+	if (missing > 0)
+		return (1);
 	return (0);
 }
 
