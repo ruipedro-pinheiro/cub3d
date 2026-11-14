@@ -60,6 +60,19 @@ int	validate_rgb(t_game *game, char *line, int id)
 	return (0);
 }
 
+static int	check_extension(char *str)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	if (len < 4)
+		return (false);
+	if (str[len - 1] == 'm' && str[len - 2] == 'p' && str[len - 3] == 'x'
+		&& str[len - 4] == '.')
+		return (true);
+	return (false);
+}
+
 static int	check_path(t_img *img)
 {
 	int			fd;
@@ -73,6 +86,8 @@ static int	check_path(t_img *img)
 	fstat(fd, &info);
 	if (!S_ISREG(info.st_mode))
 		return (ft_putendl_fd("Error\nPath is a directory", 2), 1);
+	if (!check_extension(img->path))
+		return (ft_putendl_fd("Error\nBad file extension", 2), 1);
 	close(fd);
 	return (0);
 }
