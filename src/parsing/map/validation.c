@@ -66,12 +66,17 @@ int	check_map(char **map)
 		x = -1;
 		while (map[y][++x])
 		{
-			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S' || map[y][x] == 'W' || map[y][x] == 'E')
+			if (map[y][x] == '0' || map[y][x] == 'N' || map[y][x] == 'S'
+				|| map[y][x] == 'W' || map[y][x] == 'E')
 			{
-				if (x == 0 || y == 0 || !map[y + 1] || x >= (int)ft_strlen(map[y - 1]) || x >= (int)ft_strlen(map[y + 1]))
-					return (ft_putendl_fd("Error\nMap not closed by walls", 2), 1);
-				if ((map[y][x + 1] == '\0' || map[y][x + 1] == ' ') || (map[y + 1][x] == '\0' || map[y + 1][x] == ' ') || (map[y][x - 1] == '\0' || map[y][x - 1] == ' ') || (map[y - 1][x] == '\0' || map[y - 1][x] == ' '))
-						return (ft_putendl_fd("Error\nMap not closed by walls", 2), 1);
+				if (x == 0 || y == 0 || !map[y + 1] || x >= (int)ft_strlen(map[y
+							- 1]) || x >= (int)ft_strlen(map[y + 1]))
+					return (ft_putendl_fd("Error\nMap not closed", 2), 1);
+				if ((map[y][x + 1] == '\0' || map[y][x + 1] == ' ') || (map[y
+						+ 1][x] == '\0' || map[y + 1][x] == ' ') || (map[y][x
+						- 1] == '\0' || map[y][x - 1] == ' ') || (map[y
+						- 1][x] == '\0' || map[y - 1][x] == ' '))
+					return (ft_putendl_fd("Error\nMap not closed", 2), 1);
 			}
 		}
 	}
