@@ -17,10 +17,10 @@ int	validate(t_game *game)
 	int	errno;
 
 	errno = validate_headers(game);
-	if (errno > 0)
+	if (errno != 0)
 		return (errno);
 	errno = validate_map(game);
-	if (errno > 0)
+	if (errno != 0)
 		return (errno);
 	return (0);
 }
