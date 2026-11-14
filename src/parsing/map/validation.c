@@ -6,7 +6,7 @@
 /*   By: rpinheir <rpinheir@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 16:11:16 by rpinheir          #+#    #+#             */
-/*   Updated: 2026/11/13 19:39:58 by rpinheir         ###   ########.ch       */
+/*   Updated: 2026/11/14 17:15:59 by rpinheir         ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ int	check_valid_char(char **map, t_game *game)
 	}
 	return (0);
 }
-
-// TODO: FIX SEGFAULT
 
 int	check_map(char **map)
 {
