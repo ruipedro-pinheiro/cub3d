@@ -38,25 +38,16 @@ static char	**expand_map(char **map, int count_len, int i, char *line)
 	new[count_len + 1] = NULL;
 	return (new);
 }
-// TODO: FIX LEAKING
 
 char	*skip_empty(char *line, int fd)
 {
 	while (1)
 	{
 		line = get_next_line(fd);
-		if (!line)
-			return (NULL);
-		if (line[0] == '\n' || line[0] == '\0')
-		{
-			free(line);
-			line = get_next_line(fd);
-			continue ;
-		}
-		if (line[0] != '\n')
+		if (!line || line[0] != '\n')
 			return (line);
+		free(line);
 	}
-	return (line);
 }
 
 int	dup_buffer(t_game *game, int fd)
