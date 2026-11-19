@@ -55,6 +55,15 @@ void	setup_dda(t_game *game, t_ray *ray)
 	set_sidestep(game, ray);
 }
 
+static int	check_limits(t_game *game, t_ray *ray)
+{
+	if (ray->map_y < 0 || ray->map_y >= game->map_height)
+		return (1);
+	else if (ray->map_x < 0 || ray->map_x >= ft_strlen(game->map[ray->map_y]))
+		return (1);
+	return (0);
+}
+
 void	dda(t_game *game, t_ray *ray)
 {
 	setup_dda(game, ray);
@@ -72,6 +81,8 @@ void	dda(t_game *game, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
+		if (check_limits(game, ray) != 0)
+			break ;
 		if (game->map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}

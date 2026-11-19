@@ -33,12 +33,9 @@ void	draw_square(t_game *game, int x, int y, int size)
 	return ;
 }
 
-// -50 to hide textures
-
 void	create_canvas(t_game *game)
 {
 	ft_bzero(game->screen.addr, HEIGHT * game->screen.size_line);
 	draw_background(game);
 	cast_rays(game);
-	generate_minimap(game);
 }

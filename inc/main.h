@@ -24,7 +24,6 @@
 # include "player.h"
 # include <math.h>
 # include "textures.h"
-# include "mini_map.h"
 # include "raycast.h"
 # include <sys/time.h>
 #endif

@@ -29,16 +29,6 @@ typedef struct s_line
 	int		step;
 }			t_line;
 
-typedef struct s_minimap
-{
-	double	offset_x;
-	double	offset_y;
-	int		height;
-	int		width;
-	int		tile_size;
-	int		color_tile;
-}			t_minimap;
-
 typedef struct s_player
 {
 	double	pos_x;
@@ -78,6 +68,7 @@ typedef struct s_game
 	void		*win_ptr;
 	char		**config;
 	char		**map;
+	int			map_height;
 	char		*path_to_map;
 	int			cursorcreate_ca;
 	int			c_color[3];

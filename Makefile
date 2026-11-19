@@ -26,11 +26,6 @@ SRC =main.c \
       render/init_graphics.c \
       render/render_canvas.c \
 	  \
-      minimap/mini_map.c \
-      minimap/mini_player.c \
-      minimap/utils_minimap.c \
-	  minimap/ray_minimap.c \
-	  \
       parsing/check_order.c \
       parsing/parse_prep.c \
       parsing/validation.c \

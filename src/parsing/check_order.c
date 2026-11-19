@@ -79,5 +79,6 @@ int	dup_buffer(t_game *game, int fd)
 	}
 	if (!game->config || !game->map)
 		return (ft_putendl_fd("Error\nempty map or header", 2), 1);
+	game->map_height = count_len;
 	return (0);
 }
